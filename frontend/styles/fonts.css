@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Typewriter';
+  src: url('../assets/fonts/Typewriter-Light.ttf');
+  src: url('../assets/fonts/Typewriter-Regular.ttf');
+}
+
+.typewriter {
+  font-family: 'Typewriter'
+}
+
+.times-new-roman {
+  font-family: "Times New Roman", Times, serif;
+}
