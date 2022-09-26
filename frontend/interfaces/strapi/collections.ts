@@ -23,3 +23,11 @@ export type Writer = {
   articles?: CollectionStrapiResponse<Article>
   email: string
 }
+
+export type Book = {
+  title: string
+  description: string
+  published: boolean
+  cover_image: SingleStrapiResponse<Media>
+  on_homepage: boolean
+}

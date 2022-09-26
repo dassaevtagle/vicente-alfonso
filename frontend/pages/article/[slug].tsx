@@ -67,10 +67,12 @@ const Article = ({ article }) => {
 }
 
 export async function getStaticPaths() {
-  const articlesRes = await fetchAPI<ArticleType>('/articles', { fields: ['slug'] })
+  const articlesRes = await fetchAPI<ArticleType>('/articles', {
+    fields: ['slug'],
+  })
 
-  //'/articles' is an endpoint from collection type. It will always return an array. 
-  if(articlesRes.data instanceof Array){
+  //'/articles' is an endpoint from collection type. It will always return an array.
+  if (articlesRes.data instanceof Array) {
     return {
       paths: articlesRes.data.map((article) => ({
         params: {

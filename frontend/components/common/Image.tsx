@@ -1,15 +1,31 @@
 import { getStrapiMedia } from '../../lib/media'
 import NextImage from 'next/image'
+import { Media, SingleStrapiResponse } from '../../interfaces/strapi'
 
-const Image = ({ image }) => {
+type ImageProps = {
+  image: SingleStrapiResponse<Media>
+  responsive?: boolean
+}
+
+const Image = ({ image, responsive = false }: ImageProps) => {
   const { alternativeText, width, height } = image.data.attributes
 
+  if (responsive) {
+    return (
+      <div className="w-full h-full relative">
+        <NextImage
+          layout="fill"
+          objectFit="contain"
+          src={getStrapiMedia(image)}
+          alt={alternativeText || ''}
+        />
+      </div>
+    )
+  }
   return (
     <NextImage
-      layout="responsive"
       width={width}
       height={height}
-      objectFit="contain"
       src={getStrapiMedia(image)}
       alt={alternativeText || ''}
     />

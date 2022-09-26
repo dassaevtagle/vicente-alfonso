@@ -20,5 +20,9 @@ export type StrapiError = {
 
 export type StrapiRecord<T> = {
   readonly id: number
-  readonly attributes: T & { createdAt?: string; updatedAt?: string; publishedAt?: string; }
+  readonly attributes: T & {
+    createdAt?: string
+    updatedAt?: string
+    publishedAt?: string
+  }
 }

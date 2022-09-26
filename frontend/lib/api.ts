@@ -1,5 +1,8 @@
 import qs from 'qs'
-import { CollectionStrapiResponse, SingleStrapiResponse } from '../interfaces/strapi'
+import {
+  CollectionStrapiResponse,
+  SingleStrapiResponse,
+} from '../interfaces/strapi'
 
 /**
  * Get full Strapi URL from path

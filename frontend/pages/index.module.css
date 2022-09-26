@@ -1,4 +1,0 @@
-.hero-image {
-  height: 95vh;
-  @apply object-top object-cover col-start-2 w-full grayscale -z-10;
-}
