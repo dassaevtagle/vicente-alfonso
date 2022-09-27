@@ -1,6 +1,8 @@
 import Image from '../common/Image'
 import { Book, StrapiRecord } from '../../interfaces/strapi'
+import ReactMarkdown from 'react-markdown'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 const Carousel = ({ books }: { books: StrapiRecord<Book>[] }) => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -32,13 +34,17 @@ const Carousel = ({ books }: { books: StrapiRecord<Book>[] }) => {
               `${idx === activeIndex ? '' : 'hidden '}` + 'w-full h-full flex'
             }
           >
-            <div className="w-8/12 m-auto">
-              {book.attributes.title}
-              {book.attributes.description}
-            </div>
-            <div className="w-4/12">
-              <Image responsive image={book.attributes.cover_image} />
-            </div>
+            <Link href={`/books/${book.attributes.slug}`}>
+              <div className="w-8/12 m-auto">
+                {book.attributes.title}
+                <ReactMarkdown children={book.attributes.description} />
+              </div>
+            </Link>
+            <Link href={`/books/${book.attributes.slug}`}>
+              <div className="w-4/12">
+                <Image responsive image={book.attributes.cover_image} />
+              </div>
+            </Link>
           </div>
         ))}
         <div className="relative w-full h-full">

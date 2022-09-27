@@ -10,4 +10,12 @@ export type Global = {
 
 export type Homepage = {
   seo: Seo
+  biography: string
+  bio_photo: SingleStrapiResponse<Media>
+}
+
+export type SocialMedia = {
+  facebook_url: string
+  twitter_url: string
+  email: string
 }

@@ -30,4 +30,5 @@ export type Book = {
   published: boolean
   cover_image: SingleStrapiResponse<Media>
   on_homepage: boolean
+  slug: string
 }

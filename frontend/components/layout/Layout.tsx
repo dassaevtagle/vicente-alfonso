@@ -15,6 +15,7 @@ const Layout = ({ children, title }: Props) => {
   return (
     <div>
       <Head>
+        {/* Title will be overriden by metaTitle in Seo component if declared */}
         <title>{`${title} | ${siteName}`} </title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

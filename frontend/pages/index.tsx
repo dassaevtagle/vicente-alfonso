@@ -6,6 +6,7 @@ import { Article, Book, Homepage, StrapiRecord } from '../interfaces/strapi'
 import Seo from '../components/common/Seo'
 import Hero from '../components/homepage/Hero'
 import Books from '../components/homepage/Books'
+import About from '../components/homepage/About'
 
 type HomeStaticProps = {
   articles: StrapiRecord<Article>[]
@@ -18,6 +19,7 @@ const Home = ({ articles, homepage, books }: HomeStaticProps) => (
     <Seo seo={homepage.attributes.seo} />
     <Hero MainImage={HeroImage} />
     <Books books={books} />
+    <About bio_photo={homepage.attributes.bio_photo} biography={homepage.attributes.biography}/>
     <div className="uk-section">
       <div className="uk-container uk-container-large">
         <Articles articles={articles} />
@@ -32,6 +34,7 @@ export async function getStaticProps() {
     fetchAPI<Homepage>('/homepage', {
       populate: {
         seo: { populate: '*' },
+        bio_photo: {populate: '*'}
       },
     }),
     fetchAPI<Book>('/books', { 
