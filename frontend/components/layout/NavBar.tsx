@@ -1,7 +1,13 @@
 import Link from 'next/link'
 import ExternalLink from '../common/ExternalLink'
 
-const NavBar = () => (
+type NavBarProps = {
+  facebook_url: string
+  twitter_url: string
+  email: string
+}
+
+const NavBar = ({ facebook_url, twitter_url, email }: NavBarProps) => (
   <header className="sticky top-0">
     <nav className="flex w-full justify-between py-2 bg-zinc-500 text-white uppercase">
       <div>
@@ -19,10 +25,13 @@ const NavBar = () => (
         </Link>
       </div>
       <div>
-        <ExternalLink classes="mr-2" href="/">
+        <ExternalLink classes="mr-2" href={facebook_url}>
           Facebook
         </ExternalLink>
-        <ExternalLink classes="mr-2" href="/about">
+        <ExternalLink classes="mr-2" href={twitter_url}>
+          Twitter
+        </ExternalLink>
+        <ExternalLink classes="mr-2" href={`mailto:${email}`}>
           Correo
         </ExternalLink>
       </div>

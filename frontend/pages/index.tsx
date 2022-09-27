@@ -19,12 +19,11 @@ const Home = ({ articles, homepage, books }: HomeStaticProps) => (
     <Seo seo={homepage.attributes.seo} />
     <Hero MainImage={HeroImage} />
     <Books books={books} />
-    <About bio_photo={homepage.attributes.bio_photo} biography={homepage.attributes.biography}/>
-    <div className="uk-section">
-      <div className="uk-container uk-container-large">
-        <Articles articles={articles} />
-      </div>
-    </div>
+    <Articles articles={articles} />
+    <About
+      bio_photo={homepage.attributes.bio_photo}
+      biography={homepage.attributes.biography}
+    />
   </Layout>
 )
 export async function getStaticProps() {
@@ -34,16 +33,16 @@ export async function getStaticProps() {
     fetchAPI<Homepage>('/homepage', {
       populate: {
         seo: { populate: '*' },
-        bio_photo: {populate: '*'}
+        bio_photo: { populate: '*' },
       },
     }),
-    fetchAPI<Book>('/books', { 
+    fetchAPI<Book>('/books', {
       populate: '*',
       filters: {
         on_homepage: {
-          $eq:true
-        }
-      }
+          $eq: true,
+        },
+      },
     }),
   ])
   return {

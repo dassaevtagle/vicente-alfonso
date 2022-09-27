@@ -4,8 +4,7 @@ import { fetchAPI } from '../../lib/api'
 import { Book as BookType, StrapiRecord } from '../../interfaces/strapi'
 import ReactMarkdown from 'react-markdown'
 
-const Book = ({ book } : { book: StrapiRecord<BookType>}) => {
-
+const Book = ({ book }: { book: StrapiRecord<BookType> }) => {
   return (
     <Layout title={book.attributes.title}>
       <h1 className="text-3xl">{book.attributes.title}</h1>

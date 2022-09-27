@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * writer router.
+ * notice router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::writer.writer');
+module.exports = createCoreRouter('api::notice.notice');

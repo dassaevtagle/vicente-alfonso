@@ -1,37 +1,17 @@
 import React from 'react'
-import Card from './Card'
+import { Article, StrapiRecord } from '../interfaces/strapi'
+import ArticleCard from './ArticleCard'
 
-const Articles = ({ articles }) => {
-  const leftArticlesCount = Math.ceil(articles.length / 5)
-  const leftArticles = articles.slice(0, leftArticlesCount)
-  const rightArticles = articles.slice(leftArticlesCount, articles.length)
+type ArticlesProps = {
+  articles: StrapiRecord<Article>[]
+}
 
+const Articles = ({ articles }: ArticlesProps) => {
   return (
-    <div>
-      <div className="uk-child-width-1-2@s" data-uk-grid="true">
-        <div>
-          {leftArticles.map((article) => {
-            return (
-              <Card
-                article={article}
-                key={`article__left__${article.attributes.slug}`}
-              />
-            )
-          })}
-        </div>
-        <div>
-          <div className="uk-child-width-1-2@m uk-grid-match" data-uk-grid>
-            {rightArticles.map((article) => {
-              return (
-                <Card
-                  article={article}
-                  key={`article__left__${article.attributes.slug}`}
-                />
-              )
-            })}
-          </div>
-        </div>
-      </div>
+    <div className="w-full">
+      {articles.map((article) => (
+        <ArticleCard key={article.id} article={article.attributes} />
+      ))}
     </div>
   )
 }

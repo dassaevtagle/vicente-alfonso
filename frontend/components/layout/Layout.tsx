@@ -10,7 +10,8 @@ type Props = {
 }
 
 const Layout = ({ children, title }: Props) => {
-  const { siteName } = useContext(GlobalContext)
+  const { siteName, facebook_url, email, twitter_url } =
+    useContext(GlobalContext)
 
   return (
     <div>
@@ -20,7 +21,11 @@ const Layout = ({ children, title }: Props) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <NavBar />
+      <NavBar
+        facebook_url={facebook_url}
+        twitter_url={twitter_url}
+        email={email}
+      />
       {children}
       <Footer />
     </div>

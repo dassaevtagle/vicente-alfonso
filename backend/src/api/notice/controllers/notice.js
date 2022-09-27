@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- *  writer controller
+ * notice controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::writer.writer');
+module.exports = createCoreController('api::notice.notice');

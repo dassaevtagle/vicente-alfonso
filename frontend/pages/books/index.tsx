@@ -1,6 +1,6 @@
-import { Book, StrapiRecord } from "../../interfaces/strapi"
+import { Book, StrapiRecord } from '../../interfaces/strapi'
 
-const Books = ({books} : {books: StrapiRecord<Book>[]}) => {
+const Books = ({ books }: { books: StrapiRecord<Book>[] }) => {
   return <></>
 }
 

@@ -33,6 +33,18 @@
         "files",
         "videos"
       ]
+    },
+    "facebook_url": {
+      "type": "string",
+      "required": true
+    },
+    "twitter_url": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
     }
   }
 }

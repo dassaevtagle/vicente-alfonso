@@ -7,24 +7,24 @@ import { getStrapiMedia } from '../lib/media'
 import '../styles/globals.css'
 
 type MyAppProps = AppProps & {
-  pageProps: { globalStrapiRecord: StrapiRecord<Global> }
+  pageProps: { global: StrapiRecord<Global> }
 }
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext<Global | null>(null)
 
 const MyApp = ({ Component, pageProps }: MyAppProps) => {
-  const { globalStrapiRecord } = pageProps
+  const { global } = pageProps
 
   return (
     <>
       <Head>
         <link
           rel="shortcut icon"
-          href={getStrapiMedia(globalStrapiRecord.attributes.favicon)}
+          href={getStrapiMedia(global.attributes.favicon)}
         />
       </Head>
-      <GlobalContext.Provider value={globalStrapiRecord.attributes}>
+      <GlobalContext.Provider value={global.attributes}>
         <Component {...pageProps} />
       </GlobalContext.Provider>
     </>
@@ -52,7 +52,7 @@ MyApp.getInitialProps = async (ctx) => {
   return {
     ...appProps,
     pageProps: {
-      globalStrapiRecord: globalRes.data,
+      global: globalRes.data,
     },
   }
 }
