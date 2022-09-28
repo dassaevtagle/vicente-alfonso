@@ -9,8 +9,10 @@ type ArticleProps = {
 
 const ArticleCard = ({ article }: ArticleProps) => {
   return (
-    <div className="w-full border-solid border-slate-50 border-2">
-      {article.title}
+    <div className="w-full border-solid border-slate-50 border-2 mb-5 p-2">
+      <h2 className='text-lg'>
+        {article.title}
+      </h2>
       {article.category.data.attributes.name}
       <br />
       {article.description}

@@ -1,4 +1,5 @@
 import Layout from '../../components/layout/Layout'
+import Image from '../../components/common/Image'
 
 import { fetchAPI } from '../../lib/api'
 import { Book as BookType, StrapiRecord } from '../../interfaces/strapi'
@@ -8,7 +9,12 @@ const Book = ({ book }: { book: StrapiRecord<BookType> }) => {
   return (
     <Layout title={book.attributes.title}>
       <h1 className="text-3xl">{book.attributes.title}</h1>
+      <div className='inline-flex p-4'>
+        <div className='w-full'>
+          <Image image={book.attributes.cover_image}/>
+        </div>
       <ReactMarkdown children={book.attributes.description} />
+      </div>
     </Layout>
   )
 }

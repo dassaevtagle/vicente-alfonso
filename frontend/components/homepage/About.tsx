@@ -8,11 +8,11 @@ type AboutProps = {
 }
 
 const About = ({ bio_photo, biography }: AboutProps) => (
-  <div className="inline-flex">
-    <div className="w-60 h-60">
-      <Image responsive image={bio_photo} />
+  <div className="inline-flex pb-10">
+    <div className="w-60 mx-auto">
+      <Image image={bio_photo} />
     </div>
-    <div className="max-w-8/12">
+    <div className="w-8/12 ml-auto pr-10">
       <ReactMarkdown children={biography} />
     </div>
   </div>
