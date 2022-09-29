@@ -8,7 +8,7 @@ type NavBarProps = {
 }
 
 const NavBar = ({ facebook_url, twitter_url, email }: NavBarProps) => (
-  <header className="sticky top-0">
+  <header className="sticky top-0 z-10">
     <nav className="flex w-full justify-between py-2 bg-zinc-500 text-white uppercase">
       <div>
         <Link href="/">
@@ -17,7 +17,7 @@ const NavBar = ({ facebook_url, twitter_url, email }: NavBarProps) => (
         <Link href="/about">
           <a className="mr-2">Libros</a>
         </Link>
-        <Link href="/users">
+        <Link href="/multimedia">
           <a className="mr-2">Multimedia</a>
         </Link>
         <Link href="/users">

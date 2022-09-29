@@ -8,7 +8,7 @@ type NoticesProps = {
 
 const Notices = ({notices}: NoticesProps) => {
   return (
-  <div className="container p-4">
+  <div className="container p-4 bg-gray-200">
   {notices.map(notice => (
     <div key={notice.id}>
       <h2 className="text-xl">{notice.attributes.title}</h2>

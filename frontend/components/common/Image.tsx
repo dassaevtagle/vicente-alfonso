@@ -16,7 +16,6 @@ const Image = ({ image, responsive = false }: ImageProps) => {
         <NextImage
           layout="fill"
           objectFit="contain"
-          className="-z-10"
           src={getStrapiMedia(image)}
           alt={alternativeText || ''}
         />
@@ -27,7 +26,6 @@ const Image = ({ image, responsive = false }: ImageProps) => {
     <NextImage
       width={width}
       height={height}
-      className="-z-10"
       src={getStrapiMedia(image)}
       alt={alternativeText || ''}
     />

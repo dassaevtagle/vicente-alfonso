@@ -42,6 +42,14 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
+    },
+    "subtitle": {
+      "type": "string"
     }
   }
 }

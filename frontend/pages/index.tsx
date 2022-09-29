@@ -1,10 +1,8 @@
-import HeroImage from '../public/img/vicente-hero.jpeg'
 import Layout from '../components/layout/Layout'
 import Articles from '../components/Articles'
 import { fetchAPI } from '../lib/api'
 import { Article, Book, Homepage, Notice, StrapiRecord } from '../interfaces/strapi'
 import Seo from '../components/common/Seo'
-import Hero from '../components/homepage/Hero'
 import Books from '../components/homepage/Books'
 import About from '../components/homepage/About'
 import Notices from '../components/homepage/Notices'
@@ -19,10 +17,12 @@ type HomeStaticProps = {
 const Home = ({ articles, homepage, books, notices }: HomeStaticProps) => (
   <Layout title="Inicio">
     <Seo seo={homepage.attributes.seo} />
-    <Hero MainImage={HeroImage} />
     <Notices notices={notices} />
     <Books books={books} />
     <Articles articles={articles} />
+    <div className='relative flex mb-5'>
+      <div className="flex-grow border-t border-black border-solid"></div>
+    </div>
     <About
       bio_photo={homepage.attributes.bio_photo}
       biography={homepage.attributes.biography}

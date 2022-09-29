@@ -9,14 +9,16 @@ type ArticleProps = {
 
 const ArticleCard = ({ article }: ArticleProps) => {
   return (
+    <Link href={`/articles/${article.slug}`}>
     <div className="w-full border-solid border-slate-50 border-2 mb-5 p-2">
       <h2 className='text-lg'>
         {article.title}
       </h2>
-      {article.category.data.attributes.name}
+      {article.category && article.category.data.attributes.name}
       <br />
       {article.description}
     </div>
+    </Link>
   )
 }
 
