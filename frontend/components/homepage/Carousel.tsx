@@ -1,58 +1,96 @@
-import Image from '../common/Image'
-import { Book, StrapiRecord } from '../../interfaces/strapi'
-import ReactMarkdown from 'react-markdown'
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
+import React, { ReactElement, ReactNode, useEffect, useState } from 'react'
 
-const Carousel = ({ books }: { books: StrapiRecord<Book>[] }) => {
-  const [activeIndex, setActiveIndex] = useState(0)
+type CarouselItemProps = {
+  children: ReactNode
+  widthPercentage?: 100 | 50 | 33.33 | 25
+}
 
+export const CarouselItem = ({
+  children,
+  widthPercentage = 100,
+}: CarouselItemProps) => {
+  return (
+    <div
+      className="inline-flex whitespace-normal align-top"
+      style={{ width: `${widthPercentage}%` }}
+    >
+      {children}
+    </div>
+  )
+}
+
+type CarouselProps = {
+  secondsOfInterval?: number
+  children: ReactElement<CarouselItemProps> | ReactElement<CarouselItemProps>[]
+}
+
+const Carousel = ({ secondsOfInterval = 3, children }: CarouselProps) => {
+  let MILISECONDS = secondsOfInterval * 1000
+  const [totalIndexes, setTotalIndexes] = useState<number>(0)
+  const [activeIndex, setActiveIndex] = useState<number>(0)
+  const [paused, setPaused] = useState<boolean>(false)
   useEffect(() => {
-    let timeout = setTimeout(() => {
-      goToNextIndex(activeIndex)
-    }, 2000)
+    calculateTotalIndexes()
+    let interval = setInterval(() => {
+      !paused && goNext()
+    }, MILISECONDS)
     return () => {
-      clearTimeout(timeout)
+      interval && clearInterval(interval)
     }
-  }, [activeIndex])
+  })
 
-  function goToNextIndex(activeIndex: number) {
-    if (activeIndex + 1 === books.length) {
-      setActiveIndex(0)
-    } else {
-      setActiveIndex(activeIndex + 1)
+  function calculateTotalIndexes() {
+    let count = 0
+    //When accumulator reaches 100 we set a new index.
+    //100% means current item is full width already
+    let accumulator = 0
+    React.Children.forEach(children, (child) => {
+      if (Math.round(accumulator) === 100) {
+        ++count
+        accumulator = child.props.widthPercentage
+      } else {
+        accumulator += child.props.widthPercentage
+      }
+    })
+    setTotalIndexes(count)
+  }
+
+  function goToIndex(newIndex: number) {
+    if (newIndex < 0) {
+      newIndex = totalIndexes
     }
+    if (newIndex >= totalIndexes + 1) {
+      newIndex = 0
+    }
+    setActiveIndex(newIndex)
+  }
+
+  function goNext() {
+    goToIndex(activeIndex + 1)
+  }
+
+  function goPrevious() {
+    goToIndex(activeIndex - 1)
   }
 
   return (
-    <>
-      <div className="overflow-hidden h-96">
-        {books.map((book, idx) => (
-          <div
-            key={book.id}
-            className={
-              `${idx === activeIndex ? '' : 'hidden '}` + 'w-full h-full flex'
-            }
-          >
-            <Link href={`/books/${book.attributes.slug}`}>
-              <div className="w-8/12 m-auto">
-                {book.attributes.title}
-                <ReactMarkdown children={book.attributes.description} />
-              </div>
-            </Link>
-            <Link href={`/books/${book.attributes.slug}`}>
-              <div className="w-4/12">
-                <Image responsive image={book.attributes.cover_image} />
-              </div>
-            </Link>
-          </div>
-        ))}
-        <div className="relative w-full h-full">
-          <span className="absolute">⬅</span>
-          <span className="absolute right-0">➡</span>
-        </div>
+    <div
+      className="overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div
+        className="whitespace-nowrap transition-transform"
+        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+      >
+        {children &&
+          React.Children.map(children, (child) => {
+            return React.cloneElement(child, {
+              widthPercentage: child.props.widthPercentage,
+            })
+          })}
       </div>
-    </>
+    </div>
   )
 }
 

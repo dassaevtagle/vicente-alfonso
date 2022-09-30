@@ -4,7 +4,8 @@
   "info": {
     "singularName": "notice",
     "pluralName": "notices",
-    "displayName": "Notice"
+    "displayName": "Notice",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,11 +21,12 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "valid_until": {
       "type": "date",

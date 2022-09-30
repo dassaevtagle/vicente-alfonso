@@ -24,7 +24,7 @@ const Home = ({ articles, homepage, books, notices }: HomeStaticProps) => (
   <Layout displayName title="Inicio">
     <Seo seo={homepage.attributes.seo} />
     <Notices notices={notices} />
-    <Books books={books} />
+    {/* <Books books={books} />
     <Articles articles={articles} />
     <div className="relative flex mb-5">
       <div className="flex-grow border-t border-black border-solid"></div>
@@ -32,7 +32,7 @@ const Home = ({ articles, homepage, books, notices }: HomeStaticProps) => (
     <About
       bio_photo={homepage.attributes.bio_photo}
       biography={homepage.attributes.biography}
-    />
+    /> */}
   </Layout>
 )
 export async function getStaticProps() {
