@@ -7,9 +7,10 @@ import { GlobalContext } from '../../pages/_app'
 type Props = {
   children?: ReactNode
   title: string
+  displayName?: boolean
 }
 
-const Layout = ({ children, title }: Props) => {
+const Layout = ({ children, title, displayName = false }: Props) => {
   const { siteName, facebook_url, email, twitter_url } =
     useContext(GlobalContext)
 
@@ -21,6 +22,11 @@ const Layout = ({ children, title }: Props) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      {displayName && (
+        <h1 className="text-6xl times-new-roman italic font-medium text-center pt-4 pb-8">
+          Vicente Alfonso
+        </h1>
+      )}
       <NavBar
         facebook_url={facebook_url}
         twitter_url={twitter_url}

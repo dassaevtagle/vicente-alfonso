@@ -1,7 +1,13 @@
 import Layout from '../components/layout/Layout'
 import Articles from '../components/Articles'
 import { fetchAPI } from '../lib/api'
-import { Article, Book, Homepage, Notice, StrapiRecord } from '../interfaces/strapi'
+import {
+  Article,
+  Book,
+  Homepage,
+  Notice,
+  StrapiRecord,
+} from '../interfaces/strapi'
 import Seo from '../components/common/Seo'
 import Books from '../components/homepage/Books'
 import About from '../components/homepage/About'
@@ -15,12 +21,12 @@ type HomeStaticProps = {
 }
 
 const Home = ({ articles, homepage, books, notices }: HomeStaticProps) => (
-  <Layout title="Inicio">
+  <Layout displayName title="Inicio">
     <Seo seo={homepage.attributes.seo} />
     <Notices notices={notices} />
     <Books books={books} />
     <Articles articles={articles} />
-    <div className='relative flex mb-5'>
+    <div className="relative flex mb-5">
       <div className="flex-grow border-t border-black border-solid"></div>
     </div>
     <About
@@ -47,7 +53,7 @@ export async function getStaticProps() {
         },
       },
     }),
-    fetchAPI<Notice>('/notices', { populate: '*'}),
+    fetchAPI<Notice>('/notices', { populate: '*' }),
   ])
   return {
     props: {

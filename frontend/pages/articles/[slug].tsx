@@ -3,7 +3,6 @@ import Layout from '../../components/layout/Layout'
 import Image from '../../components/common/Image'
 
 import { fetchAPI } from '../../lib/api'
-import { getStrapiMedia } from '../../lib/media'
 import { Article as ArticleType, StrapiRecord } from '../../interfaces/strapi'
 import ReactMarkdown from 'react-markdown'
 
@@ -11,9 +10,7 @@ type ArticleProps = {
   article: StrapiRecord<ArticleType>
 }
 
-const Article = ({ article } : ArticleProps) => {
-  const imageUrl = getStrapiMedia(article.attributes.image)
-
+const Article = ({ article }: ArticleProps) => {
   const seo = {
     metaTitle: article.attributes.title,
     metaDescription: article.attributes.description,
@@ -24,9 +21,9 @@ const Article = ({ article } : ArticleProps) => {
   return (
     <Layout title="Blog">
       <Seo seo={seo} />
-      <h1 className='text-2xl'>{article.attributes.title}</h1>
+      <h1 className="text-2xl">{article.attributes.title}</h1>
       <Image image={article.attributes.image} />
-      <ReactMarkdown children={article.attributes.content} />
+      <ReactMarkdown>{article.attributes.content}</ReactMarkdown>
     </Layout>
   )
 }
