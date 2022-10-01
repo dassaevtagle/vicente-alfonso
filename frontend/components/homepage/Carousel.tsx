@@ -7,7 +7,7 @@ type CarouselItemProps = {
 
 export const CarouselItem = ({
   children,
-  widthPercentage = 100,
+  widthPercentage = 33.33,
 }: CarouselItemProps) => {
   return (
     <div
