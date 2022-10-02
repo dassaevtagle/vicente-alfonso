@@ -1,4 +1,7 @@
 import React, { ReactElement, ReactNode, useEffect, useState } from 'react'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+
+const DEFAULT_WIDTH_CAROUSEL_ITEM = 33.33
 
 type CarouselItemProps = {
   children: ReactNode
@@ -7,7 +10,7 @@ type CarouselItemProps = {
 
 export const CarouselItem = ({
   children,
-  widthPercentage = 33.33,
+  widthPercentage = DEFAULT_WIDTH_CAROUSEL_ITEM,
 }: CarouselItemProps) => {
   return (
     <div
@@ -20,20 +23,32 @@ export const CarouselItem = ({
 }
 
 type CarouselProps = {
-  secondsOfInterval?: number
+  intervalSeconds?: number
+  paused?: boolean
+  arrows?: boolean
+  circles?: boolean
   children: ReactElement<CarouselItemProps> | ReactElement<CarouselItemProps>[]
 }
 
-const Carousel = ({ secondsOfInterval = 3, children }: CarouselProps) => {
-  let MILISECONDS = secondsOfInterval * 1000
+const Carousel = ({
+  intervalSeconds = 3,
+  paused = false,
+  arrows = true,
+  circles = true,
+  children,
+}: CarouselProps) => {
+  let MILISECONDS = intervalSeconds * 1000
   const [totalIndexes, setTotalIndexes] = useState<number>(0)
   const [activeIndex, setActiveIndex] = useState<number>(0)
-  const [paused, setPaused] = useState<boolean>(false)
+  const [innerPause, setInnerPause] = useState<boolean>(false)
   useEffect(() => {
     calculateTotalIndexes()
-    let interval = setInterval(() => {
-      !paused && goNext()
-    }, MILISECONDS)
+    let interval
+    if (!paused) {
+      interval = setInterval(() => {
+        !innerPause && goNext()
+      }, MILISECONDS)
+    }
     return () => {
       interval && clearInterval(interval)
     }
@@ -45,11 +60,14 @@ const Carousel = ({ secondsOfInterval = 3, children }: CarouselProps) => {
     //100% means current item is full width already
     let accumulator = 0
     React.Children.forEach(children, (child) => {
+      //Default widthPercentage if prop is not specified
+      let widthPercentage =
+        child.props.widthPercentage ?? DEFAULT_WIDTH_CAROUSEL_ITEM
       if (Math.round(accumulator) === 100) {
         ++count
-        accumulator = child.props.widthPercentage
+        accumulator = widthPercentage
       } else {
-        accumulator += child.props.widthPercentage
+        accumulator += widthPercentage
       }
     })
     setTotalIndexes(count)
@@ -75,21 +93,56 @@ const Carousel = ({ secondsOfInterval = 3, children }: CarouselProps) => {
 
   return (
     <div
-      className="overflow-hidden"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      className="grid"
+      style={{
+        gridTemplateColumns: '30px auto 30px',
+      }}
     >
+      {arrows && (
+        <button className="place-self-center text-gray-400">
+          <FiChevronLeft size={30} />
+        </button>
+      )}
       <div
-        className="whitespace-nowrap transition-transform"
-        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        className="overflow-hidden"
+        style={arrows ? {} : { gridColumn: '1/-1' }}
+        onMouseEnter={() => setInnerPause(true)}
+        onMouseLeave={() => setInnerPause(false)}
       >
-        {children &&
-          React.Children.map(children, (child) => {
-            return React.cloneElement(child, {
-              widthPercentage: child.props.widthPercentage,
-            })
-          })}
+        <div
+          className="whitespace-nowrap transition-transform"
+          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        >
+          {children &&
+            React.Children.map(children, (child) => {
+              return React.cloneElement(child, {
+                widthPercentage: child.props.widthPercentage,
+              })
+            })}
+        </div>
       </div>
+      {arrows && (
+        <button className="place-self-center text-gray-400">
+          <FiChevronRight size={30} />
+        </button>
+      )}
+      {circles && (
+        <div
+          className="flex justify-center gap-x-2 py-4"
+          style={{ gridColumn: '1/-1' }} //span all the columns
+        >
+          {Array.from(Array(totalIndexes + 1)).map((_, index) => {
+            return (
+              <div
+                className={`${
+                  activeIndex === index ? 'bg-gray-500' : 'bg-gray-300'
+                } rounded-full w-3 h-3 inline-block hover:cursor-pointer`}
+                onClick={() => setActiveIndex(index)}
+              ></div>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

@@ -35,9 +35,6 @@
         "audios"
       ]
     },
-    "on_homepage": {
-      "type": "boolean"
-    },
     "slug": {
       "type": "string",
       "required": true,

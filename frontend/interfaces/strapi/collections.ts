@@ -15,7 +15,6 @@ export type Book = {
   description: string
   published: boolean
   cover_image: SingleStrapiResponse<Media>
-  on_homepage: boolean
   slug: string
   reviews?: CollectionStrapiResponse<Review>
 }
@@ -41,5 +40,6 @@ export type Photo = {
 
 export type Review = {
   content: string
-  autor: string
+  author: string
+  on_homepage: boolean
 }

@@ -6,63 +6,74 @@ import {
   Book,
   Homepage,
   Notice,
+  Review,
   StrapiRecord,
 } from '../interfaces/strapi'
 import Seo from '../components/common/Seo'
 import Books from '../components/homepage/Books'
 import About from '../components/homepage/About'
 import Notices from '../components/homepage/Notices'
+import Reviews from '../components/homepage/Reviews'
 
 type HomeStaticProps = {
   articles: StrapiRecord<Article>[]
   homepage: StrapiRecord<Homepage>
   books: StrapiRecord<Book>[]
   notices: StrapiRecord<Notice>[]
+  reviews: StrapiRecord<Review>[]
 }
 
-const Home = ({ articles, homepage, books, notices }: HomeStaticProps) => (
+const Home = ({
+  articles,
+  homepage,
+  books,
+  notices,
+  reviews,
+}: HomeStaticProps) => (
   <Layout displayName title="Inicio">
     <Seo seo={homepage.attributes.seo} />
     <Notices notices={notices} />
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-2 mt-4x">
       <Articles articles={articles} />
       <About
         bio_photo={homepage.attributes.bio_photo}
         biography={homepage.attributes.biography}
       />
     </div>
-    <div className="relative flex mb-5">
-      <div className="flex-grow border-t border-black border-solid"></div>
-    </div>
     <Books books={books} />
+    <Reviews reviews={reviews} />
   </Layout>
 )
 export async function getStaticProps() {
   // Run API calls in parallel
-  const [articlesRes, homepageRes, booksRes, noticesRes] = await Promise.all([
-    fetchAPI<Article>('/articles', { populate: ['image', 'category'] }),
-    fetchAPI<Homepage>('/homepage', {
-      populate: {
-        seo: { populate: '*' },
-        bio_photo: { populate: '*' },
-      },
-    }),
-    fetchAPI<Book>('/books', {
-      populate: '*',
-      filters: {
-        on_homepage: {
-          $eq: true,
+  const [articlesRes, homepageRes, booksRes, noticesRes, reviewsRes] =
+    await Promise.all([
+      fetchAPI<Article>('/articles', { populate: ['image', 'category'] }),
+      fetchAPI<Homepage>('/homepage', {
+        populate: {
+          seo: { populate: '*' },
+          bio_photo: { populate: '*' },
         },
-      },
-    }),
-    fetchAPI<Notice>('/notices', { populate: '*' }),
-  ])
+      }),
+      fetchAPI<Book>('/books', {
+        populate: '*',
+      }),
+      fetchAPI<Notice>('/notices', { populate: '*' }),
+      fetchAPI<Review>('/reviews', {
+        filters: {
+          on_homepage: {
+            $eq: true,
+          },
+        },
+      }),
+    ])
   return {
     props: {
       articles: articlesRes.data,
       homepage: homepageRes.data,
       books: booksRes.data,
       notices: noticesRes.data,
+      reviews: reviewsRes.data,
     },
     revalidate: 1,
   }

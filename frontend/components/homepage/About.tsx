@@ -15,11 +15,11 @@ const imageCss: CSSProperties = {
   objectFit: 'cover',
   shapeOutside: 'circle()',
   float: 'left',
-  margin: '15px',
+  marginRight: '40px',
 }
 
 const About = ({ bio_photo, biography }: AboutProps) => (
-  <div className="mt-4">
+  <div>
     <Image image={bio_photo} style={imageCss} />
     <div className="pt-4">
       <ReactMarkdown>{biography}</ReactMarkdown>

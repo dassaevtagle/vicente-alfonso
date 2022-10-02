@@ -11,7 +11,7 @@ type Props = {
 }
 
 const Layout = ({ children, title, displayName = false }: Props) => {
-  const { siteName, facebook_url, email, twitter_url } =
+  const { siteName, facebook_url, email, twitter_url, footer_image } =
     useContext(GlobalContext)
 
   return (
@@ -33,7 +33,7 @@ const Layout = ({ children, title, displayName = false }: Props) => {
         email={email}
       />
       {children}
-      <Footer />
+      <Footer footer_image={footer_image} />
     </div>
   )
 }

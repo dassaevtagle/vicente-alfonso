@@ -15,10 +15,10 @@ type NoticesProps = {
 
 const Notices = ({ notices }: NoticesProps) => {
   return (
-    <div className="w-full pt-5 px-12 xl:px-64">
-      <Carousel secondsOfInterval={4}>
+    <div className="w-full pt-5 px-12 xl:px-44">
+      <Carousel intervalSeconds={4}>
         {notices.map((notice) => (
-          <CarouselItem key={notice.id} widthPercentage={33.33}>
+          <CarouselItem key={notice.id}>
             <NoticeCard notice={notice.attributes} />
           </CarouselItem>
         ))}

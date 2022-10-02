@@ -21,6 +21,10 @@
       "type": "richtext",
       "required": true,
       "maxLength": 150
+    },
+    "on_homepage": {
+      "type": "boolean",
+      "required": true
     }
   }
 }

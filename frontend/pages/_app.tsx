@@ -45,6 +45,7 @@ MyApp.getInitialProps = async (ctx) => {
       defaultSeo: {
         populate: '*',
       },
+      footer_image: '*',
     },
   })
 

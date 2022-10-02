@@ -9,6 +9,7 @@ export type Global = {
   facebook_url: string
   twitter_url: string
   email: string
+  footer_image: SingleStrapiResponse<Media>
 }
 
 export type Homepage = {
