@@ -34,6 +34,7 @@ const Layout = ({ children, title, displayName = false }: Props) => {
       />
       {children}
       <Footer footer_image={footer_image} />
+      <div id="modals"></div>
     </div>
   )
 }

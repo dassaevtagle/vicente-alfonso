@@ -1,6 +1,6 @@
 import ReactMarkdown from 'react-markdown'
 import { Review, StrapiRecord } from '../../interfaces/strapi'
-import Carousel, { CarouselItem } from './Carousel'
+import Carousel, { CarouselItem } from '../common/Carousel'
 
 type Props = {
   reviews: StrapiRecord<Review>[]

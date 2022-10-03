@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Book, StrapiRecord } from '../../interfaces/strapi'
 import Image from '../common/Image'
-import Carousel, { CarouselItem } from './Carousel'
+import Carousel, { CarouselItem } from '../common/Carousel'
 
 const Books = ({ books }: { books: StrapiRecord<Book>[] }) => {
   return (
@@ -19,7 +19,10 @@ const Books = ({ books }: { books: StrapiRecord<Book>[] }) => {
         {books.map((book) => (
           <CarouselItem key={book.id}>
             <Link href={`/books/${book.attributes.slug}`}>
-              <div className="grid grid-rows-2 mx-auto">
+              <div
+                className="grid mx-auto"
+                style={{ gridTemplateRows: 'auto' }}
+              >
                 <div className="w-48 mx-auto">
                   <Image image={book.attributes.cover_image} />
                 </div>

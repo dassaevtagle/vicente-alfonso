@@ -1,4 +1,4 @@
-import Seo from '../../components/common/Seo'
+import Seo from '../../components/layout/Seo'
 import Layout from '../../components/layout/Layout'
 import Articles from '../../components/Articles'
 

@@ -99,7 +99,10 @@ const Carousel = ({
       }}
     >
       {arrows && (
-        <button className="place-self-center text-gray-400">
+        <button
+          className="place-self-center text-gray-400 hover:text-gray-500"
+          onClick={goPrevious}
+        >
           <FiChevronLeft size={30} />
         </button>
       )}
@@ -122,7 +125,10 @@ const Carousel = ({
         </div>
       </div>
       {arrows && (
-        <button className="place-self-center text-gray-400">
+        <button
+          className="place-self-center text-gray-400 hover:text-gray-500"
+          onClick={goNext}
+        >
           <FiChevronRight size={30} />
         </button>
       )}
@@ -134,9 +140,10 @@ const Carousel = ({
           {Array.from(Array(totalIndexes + 1)).map((_, index) => {
             return (
               <div
+                key={index}
                 className={`${
                   activeIndex === index ? 'bg-gray-500' : 'bg-gray-300'
-                } rounded-full w-3 h-3 inline-block hover:cursor-pointer`}
+                } rounded-full w-3 h-3 inline-block hover:cursor-pointer hover:bg-gray-500`}
                 onClick={() => setActiveIndex(index)}
               ></div>
             )

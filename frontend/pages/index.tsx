@@ -9,7 +9,7 @@ import {
   Review,
   StrapiRecord,
 } from '../interfaces/strapi'
-import Seo from '../components/common/Seo'
+import Seo from '../components/layout/Seo'
 import Books from '../components/homepage/Books'
 import About from '../components/homepage/About'
 import Notices from '../components/homepage/Notices'
