@@ -1,5 +1,6 @@
 import React, { ReactElement, ReactNode, useEffect, useState } from 'react'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+import { useSwipeable } from 'react-swipeable'
 
 const DEFAULT_WIDTH_CAROUSEL_ITEM = 33.33
 
@@ -54,6 +55,12 @@ const Carousel = ({
     }
   })
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => goNext(),
+    onSwipedRight: () => goPrevious(),
+    preventScrollOnSwipe: true,
+  })
+
   function calculateTotalIndexes() {
     let count = 0
     //When accumulator reaches 100 we set a new index.
@@ -93,6 +100,7 @@ const Carousel = ({
 
   return (
     <div
+      {...swipeHandlers}
       className="grid"
       style={{
         gridTemplateColumns: '30px auto 30px',
@@ -100,7 +108,7 @@ const Carousel = ({
     >
       {arrows && (
         <button
-          className="place-self-center text-gray-400 hover:text-gray-500"
+          className="place-self-center h-full text-gray-400 hover:text-gray-500"
           onClick={goPrevious}
         >
           <FiChevronLeft size={30} />
@@ -126,7 +134,7 @@ const Carousel = ({
       </div>
       {arrows && (
         <button
-          className="place-self-center text-gray-400 hover:text-gray-500"
+          className="place-self-center h-full text-gray-400 hover:text-gray-500"
           onClick={goNext}
         >
           <FiChevronRight size={30} />

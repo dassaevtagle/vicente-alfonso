@@ -12,8 +12,11 @@ const NoticeCard = ({ notice }: { notice: Notice }) => (
   </div>
 )
 
-const NoticeModal = ({notice} : {notice: StrapiRecord<Notice>}) => (
-  <div className='bg-white rounded overflow-y-scroll p-7' style={{height: '36rem'}}>
+const NoticeModal = ({ notice }: { notice: StrapiRecord<Notice> }) => (
+  <div
+    className="bg-white rounded overflow-y-scroll p-7"
+    style={{ height: '36rem' }}
+  >
     <div className="relative flex items-center">
       <div className="flex-grow border-t border-gray-400"></div>
       <span
@@ -23,12 +26,10 @@ const NoticeModal = ({notice} : {notice: StrapiRecord<Notice>}) => (
         <h2>Avisos</h2>
       </span>
     </div>
-    <h3 className='text-3xl'>
-      {notice.attributes.title}
-    </h3>
+    <h3 className="text-3xl">{notice.attributes.title}</h3>
     <p>{notice.attributes.publishedAt}</p>
     <div className="w-96 mx-auto">
-      <Image image={notice.attributes.image}/>
+      <Image image={notice.attributes.image} />
     </div>
     <ReactMarkdown>{notice.attributes.description}</ReactMarkdown>
   </div>
