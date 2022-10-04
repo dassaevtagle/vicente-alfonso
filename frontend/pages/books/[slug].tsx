@@ -24,7 +24,7 @@ export async function getStaticPaths() {
     fields: ['slug'],
   })
 
-  //'/articles' is an endpoint from collection type. It will always return an array.
+  //'/books' is an endpoint from collection type. It will always return an array.
   if (booksRes.data instanceof Array) {
     return {
       paths: booksRes.data.map((book) => ({

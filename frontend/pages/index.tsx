@@ -1,5 +1,5 @@
 import Layout from '../components/layout/Layout'
-import Articles from '../components/Articles'
+import Articles from '../components/homepage/Articles'
 import { fetchAPI } from '../lib/api'
 import {
   Article,
