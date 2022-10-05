@@ -6,15 +6,17 @@ import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 
 const NoticeCard = ({ notice }: { notice: Notice }) => (
-  <div className="grid auto-rows-auto max-w-xs text-center px-12">
+  <div className="grid auto-rows-auto max-w-xs text-center px-1 xl:px-12">
     <Image image={notice.image} />
-    <h2 className="font-bold">{notice.title}</h2>
+    <h2 className="font-semibold md:font-bold text-sm md:text-base">
+      {notice.title}
+    </h2>
   </div>
 )
 
 const NoticeModal = ({ notice }: { notice: StrapiRecord<Notice> }) => (
   <div
-    className="bg-white rounded overflow-y-scroll p-7"
+    className="bg-white rounded overflow-y-scroll p-7 w-full"
     style={{ height: '36rem' }}
   >
     <div className="relative flex items-center">
@@ -28,10 +30,12 @@ const NoticeModal = ({ notice }: { notice: StrapiRecord<Notice> }) => (
     </div>
     <h3 className="text-3xl">{notice.attributes.title}</h3>
     <p>{notice.attributes.publishedAt}</p>
-    <div className="w-96 mx-auto">
+    <div className="mx-auto">
       <Image image={notice.attributes.image} />
     </div>
-    <ReactMarkdown>{notice.attributes.description}</ReactMarkdown>
+    <div className="break-words">
+      <ReactMarkdown>{notice.attributes.description}</ReactMarkdown>
+    </div>
   </div>
 )
 
@@ -49,10 +53,10 @@ const Notices = ({ notices }: NoticesProps) => {
   }
 
   return (
-    <div className="w-full pt-5 px-12 xl:px-44">
-      <Carousel intervalSeconds={4}>
+    <div className="w-full pt-5 xl:px-44">
+      <Carousel intervalSeconds={4} arrows={false}>
         {notices.map((notice, idx) => (
-          <CarouselItem key={notice.id}>
+          <CarouselItem key={notice.id} mobilePercentage={50}>
             <div onClick={() => handleNoticeClick(idx)}>
               <NoticeCard notice={notice.attributes} />
             </div>

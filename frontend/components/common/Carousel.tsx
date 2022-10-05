@@ -1,22 +1,30 @@
 import React, { ReactElement, ReactNode, useEffect, useState } from 'react'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { useSwipeable } from 'react-swipeable'
+import useWidth from '../../hooks/useWidth'
 
 const DEFAULT_WIDTH_CAROUSEL_ITEM = 33.33
+const MOBILE_DEFAULT_WIDTH_CAROUSEL_ITEM = 100
 
 type CarouselItemProps = {
   children: ReactNode
   widthPercentage?: 100 | 50 | 33.33 | 25
+  mobilePercentage?: 100 | 50 | 33.33 | 25
 }
 
+//If you add a prop to CarouselItem make sure to pass it in Carousel component when it calls React.cloneElement()
 export const CarouselItem = ({
   children,
   widthPercentage = DEFAULT_WIDTH_CAROUSEL_ITEM,
+  mobilePercentage = MOBILE_DEFAULT_WIDTH_CAROUSEL_ITEM,
 }: CarouselItemProps) => {
+  const { isMobile } = useWidth()
   return (
     <div
       className="inline-flex whitespace-normal align-top"
-      style={{ width: `${widthPercentage}%` }}
+      style={{
+        width: isMobile ? `${mobilePercentage}%` : `${widthPercentage}%`,
+      }}
     >
       {children}
     </div>
@@ -42,6 +50,7 @@ const Carousel = ({
   const [totalIndexes, setTotalIndexes] = useState<number>(0)
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [innerPause, setInnerPause] = useState<boolean>(false)
+  const { isMobile } = useWidth()
   useEffect(() => {
     calculateTotalIndexes()
     let interval
@@ -68,8 +77,7 @@ const Carousel = ({
     let accumulator = 0
     React.Children.forEach(children, (child) => {
       //Default widthPercentage if prop is not specified
-      let widthPercentage =
-        child.props.widthPercentage ?? DEFAULT_WIDTH_CAROUSEL_ITEM
+      let widthPercentage = getChildWidthPercentage(child)
       if (Math.round(accumulator) === 100) {
         ++count
         accumulator = widthPercentage
@@ -78,6 +86,20 @@ const Carousel = ({
       }
     })
     setTotalIndexes(count)
+  }
+
+  function getChildWidthPercentage(
+    child: ReactElement<CarouselItemProps>
+  ): number {
+    let widthPercentage
+    if (isMobile) {
+      widthPercentage =
+        child.props.mobilePercentage ?? MOBILE_DEFAULT_WIDTH_CAROUSEL_ITEM
+    } else {
+      widthPercentage =
+        child.props.widthPercentage ?? DEFAULT_WIDTH_CAROUSEL_ITEM
+    }
+    return widthPercentage
   }
 
   function goToIndex(newIndex: number) {
@@ -128,6 +150,7 @@ const Carousel = ({
             React.Children.map(children, (child) => {
               return React.cloneElement(child, {
                 widthPercentage: child.props.widthPercentage,
+                mobilePercentage: child.props.mobilePercentage,
               })
             })}
         </div>

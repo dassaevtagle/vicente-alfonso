@@ -67,13 +67,13 @@ const Modal = ({ children, show, onClose, modalItem }: Props) => {
       onClick={onClose}
     >
       <div
-        className="float-right absolute top-5 right-10 text-white hover:cursor-pointer"
+        className="float-right absolute top-8 right-8 md:top-5 md:right-10 text-black md:text-white hover:cursor-pointer"
         onClick={onClose}
       >
         <FiXCircle size={35} />
       </div>
       <div
-        className="container overflow-hidden m-20"
+        className="container overflow-hidden m-6 md:m-20"
         onClick={(e) => e.stopPropagation()}
       >
         {childrenIsArray && children[currentChild]}
