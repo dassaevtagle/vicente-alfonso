@@ -1,6 +1,6 @@
 import React, { ReactNode, useContext } from 'react'
 import Head from 'next/head'
-import NavBar from './NavBar'
+import NavBar from './NavBar/NavBar'
 import Footer from './Footer'
 import { GlobalContext } from '../../pages/_app'
 
@@ -22,12 +22,8 @@ const Layout = ({ children, title, displayName = false }: Props) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      {displayName && (
-        <h1 className="text-6xl times-new-roman italic font-medium text-center pt-4 pb-8">
-          Vicente Alfonso
-        </h1>
-      )}
       <NavBar
+        displayName={displayName}
         facebook_url={facebook_url}
         twitter_url={twitter_url}
         email={email}
