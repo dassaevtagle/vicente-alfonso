@@ -33,7 +33,7 @@ const Home = ({
   <Layout displayName title="Inicio">
     <Seo seo={homepage.attributes.seo} />
     <Notices notices={notices} />
-    <div className="grid grid-cols-2 mt-4x">
+    <div className="md:grid md:grid-cols-2 mt-4">
       <Articles articles={articles} />
       <About
         bio_photo={homepage.attributes.bio_photo}

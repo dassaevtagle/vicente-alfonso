@@ -53,7 +53,7 @@ const Notices = ({ notices }: NoticesProps) => {
   }
 
   return (
-    <div className="w-full pt-5 xl:px-44">
+    <div className="w-full pt-5 md:px-36">
       <Carousel intervalSeconds={4} arrows={false}>
         {notices.map((notice, idx) => (
           <CarouselItem key={notice.id} mobilePercentage={50}>

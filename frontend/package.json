@@ -9,6 +9,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.2",
     "next": "latest",
     "qs": "^6.11.0",
     "react": "^17.0.2",

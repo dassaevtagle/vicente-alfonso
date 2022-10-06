@@ -8,7 +8,6 @@ type MultimediaProps = {
 }
 
 const Multimedia = ({ photos }: MultimediaProps) => {
-  console.log(photos)
   return (
     <Layout title={'Multimedia'}>
       Multimedia

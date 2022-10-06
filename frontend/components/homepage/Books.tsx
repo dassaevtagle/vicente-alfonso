@@ -13,7 +13,7 @@ const Books = ({ books }: { books: StrapiRecord<Book>[] }) => {
           <div className="flex-grow border-t border-gray-400"></div>
         )}
         <span
-          className="flex-shrink mx-auto md:mx-4 text-gray-800 text-4xl times-new-roman uppercase"
+          className="flex-shrink mx-auto my-3 md:my-0 md:mx-4 text-gray-800 text-4xl times-new-roman uppercase"
           style={{ letterSpacing: '20px' }}
         >
           <h2>Libros</h2>

@@ -5,6 +5,9 @@ function useWidth() {
 
   const handleWindowResize = () => setWidth(window.innerWidth)
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWidth(window.innerWidth)
+    }
     window.addEventListener('resize', handleWindowResize)
     return () => {
       window.removeEventListener('resize', handleWindowResize)
