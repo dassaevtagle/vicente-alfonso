@@ -5,7 +5,7 @@ import Carousel, { CarouselItem } from '../common/Carousel'
 import useWidth from '../../hooks/useWidth'
 
 const BookCard = ({ book }: { book: Book }) => (
-  <div className='hover:cursor-pointer  mx-auto'>
+  <div className="hover:cursor-pointer  mx-auto">
     <Link href={`/books/${book.slug}`}>
       <div className="grid" style={{ gridTemplateRows: 'auto' }}>
         <div className="w-48 mx-auto">

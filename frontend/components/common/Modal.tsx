@@ -10,7 +10,7 @@ type Props = {
   modalItem?: number
   children: ReactElement | ReactElement[]
 }
-const Modal = ({ children, show, onClose, modalItem }: Props) => {
+const   Modal = ({ children, show, onClose, modalItem }: Props) => {
   if (!show) return null
   const CHILDREN_COUNT = React.Children.count(children)
   const childrenIsArray = Array.isArray(children)
@@ -67,15 +67,15 @@ const Modal = ({ children, show, onClose, modalItem }: Props) => {
       onClick={onClose}
     >
       <div
-        className="float-right absolute top-8 right-8 md:top-5 md:right-10 text-black md:text-white hover:cursor-pointer"
-        onClick={onClose}
-      >
-        <FiXCircle size={35} />
-      </div>
-      <div
-        className="container overflow-hidden m-6 md:m-20"
+        className="container overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
+        <div
+          className="float-right relative right-4 text-white hover:cursor-pointer"
+          onClick={onClose}
+        >
+          <FiXCircle size={35} />
+        </div>
         {childrenIsArray && children[currentChild]}
         {!childrenIsArray && children}
       </div>

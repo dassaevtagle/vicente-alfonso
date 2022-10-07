@@ -5,15 +5,14 @@ import { fetchAPI } from '../../lib/api'
 import { useState } from 'react'
 import Modal from '../../components/common/Modal'
 
-
-const PhotoModal = ({photo} : {photo: Photo}) => (
-  <div className='grid justify-items-center '>
-    <Image image={photo.file} style={{width: 'auto', maxHeight: '90vh'}}/>
-    <span className='text-white mt-2 text-xl'>{`${photo.description}, ${photo.year}`}</span>
+const PhotoModal = ({ photo }: { photo: Photo }) => (
+  <div className="grid justify-items-center ">
+    <Image image={photo.file} style={{ width: 'auto', maxHeight: '90vh' }} />
+    <span className="text-white mt-2 text-xl">{`${photo.description}, ${photo.year}`}</span>
   </div>
 )
 
-  type MultimediaProps = {
+type MultimediaProps = {
   photos: StrapiRecord<Photo>[]
 }
 
@@ -30,8 +29,15 @@ const Multimedia = ({ photos }: MultimediaProps) => {
     <Layout title={'Multimedia'}>
       <div className="container mx-auto mt-3 columns-3 gap-2 break-inside-avoid">
         {photos.map((photo, idx) => (
-          <div key={photo.id} className='mb-2' onClick={() => handlePhotoClick(idx)}>
-            <Image image={photo.attributes.file} className='border-solid border-2' />
+          <div
+            key={photo.id}
+            className="mb-2"
+            onClick={() => handlePhotoClick(idx)}
+          >
+            <Image
+              image={photo.attributes.file}
+              className="border-solid border-2"
+            />
           </div>
         ))}
       </div>
@@ -49,12 +55,12 @@ const Multimedia = ({ photos }: MultimediaProps) => {
 }
 
 export async function getStaticProps() {
-  const photosRes = await fetchAPI<Photo>('/photos', { 
+  const photosRes = await fetchAPI<Photo>('/photos', {
     populate: '*',
     pagination: {
       page: 1,
       pageSize: 9,
-    }
+    },
   })
   return {
     props: {

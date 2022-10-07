@@ -18,26 +18,28 @@ const NoticeCard = ({ notice }: { notice: Notice }) => (
 const NoticeModal = ({ notice }: { notice: StrapiRecord<Notice> }) => {
   const publishedAt = moment.default(notice.attributes.publishedAt).fromNow()
   return (
-    <div
-      className="bg-white rounded overflow-y-scroll p-7 w-full"
-      style={{ height: '36rem' }}
-    >
-      <div className="relative flex items-center">
+    <div className='px-4'>
+      <div
+        className="bg-white rounded-[2px] overflow-y-scroll p-4 md:p-7 w-full h-[28rem] md:h-[39rem]"
+      >
+      <div className="flex items-center mb-2">
         <div className="flex-grow border-t border-gray-400"></div>
         <span
-          className="flex-shrink mx-4 text-gray-800 text-4xl times-new-roman uppercase"
-          style={{ letterSpacing: '10px' }}
+          className="flex-shrink mx-4 text-black text-4xl times-new-roman uppercase tracking-[10px]"
         >
           <h2>Avisos</h2>
         </span>
+        <div className="flex-grow border-t border-gray-400"></div>
       </div>
-      <h3 className="text-3xl">{notice.attributes.title}</h3>
-      <p>{publishedAt}</p>
-      <div className="mx-auto">
-        <Image image={notice.attributes.image} />
-      </div>
-      <div className="break-words">
-        <ReactMarkdown>{notice.attributes.description}</ReactMarkdown>
+        <h3 className="text-lg md:text-2xl times-new-roman font-medium">
+          {notice.attributes.title}
+        </h3>
+        <p className='text-sm italic text-zinc-600'>{!notice.attributes.historical && publishedAt}</p>
+        <Image
+          image={notice.attributes.image}
+          className="mx-auto md:h-96 w-auto"
+        />
+        <ReactMarkdown className='break-words text-sm md:text-base pt-4'>{notice.attributes.description}</ReactMarkdown>
       </div>
     </div>
   )

@@ -69,10 +69,7 @@ const Footer = ({
       >
         Vicente Alfonso, {new Date().getFullYear()}
       </h3>
-      <Image
-        image={footer_image}
-        style={{ width: '100%'}}
-      />
+      <Image image={footer_image} style={{ width: '100%' }} />
     </footer>
   )
 }
