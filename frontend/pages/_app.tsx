@@ -5,6 +5,7 @@ import { StrapiRecord, Global } from '../interfaces/strapi'
 import { fetchAPI } from '../lib/api'
 import { getStrapiMedia } from '../lib/media'
 import '../styles/globals.css'
+import 'moment/locale/es-mx'
 
 type MyAppProps = AppProps & {
   pageProps: { global: StrapiRecord<Global> }

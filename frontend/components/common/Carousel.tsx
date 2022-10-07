@@ -50,6 +50,7 @@ const Carousel = ({
   const [totalIndexes, setTotalIndexes] = useState<number>(0)
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [innerPause, setInnerPause] = useState<boolean>(false)
+  const [displayBottomDots, setDisplayBottomDots] = useState<boolean>(true)
   const { isMobile } = useWidth()
   useEffect(() => {
     calculateTotalIndexes()
@@ -85,6 +86,8 @@ const Carousel = ({
         accumulator += widthPercentage
       }
     })
+    //display bottom dots if there is more than one index
+    setDisplayBottomDots(count !== 0)
     setTotalIndexes(count)
   }
 
@@ -168,17 +171,18 @@ const Carousel = ({
           className="flex justify-center gap-x-2 py-4"
           style={{ gridColumn: '1/-1' }} //span all the columns
         >
-          {Array.from(Array(totalIndexes + 1)).map((_, index) => {
-            return (
-              <div
-                key={index}
-                className={`${
-                  activeIndex === index ? 'bg-gray-500' : 'bg-gray-300'
-                } rounded-full w-3 h-3 inline-block hover:cursor-pointer hover:bg-gray-500`}
-                onClick={() => setActiveIndex(index)}
-              ></div>
-            )
-          })}
+          {displayBottomDots &&
+            Array.from(Array(totalIndexes + 1)).map((_, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`${
+                    activeIndex === index ? 'bg-gray-500' : 'bg-gray-300'
+                  } rounded-full w-3 h-3 inline-block hover:cursor-pointer hover:bg-gray-500`}
+                  onClick={() => setActiveIndex(index)}
+                ></div>
+              )
+            })}
         </div>
       )}
     </div>

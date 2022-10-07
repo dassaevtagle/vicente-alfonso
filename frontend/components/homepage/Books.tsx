@@ -4,6 +4,17 @@ import Image from '../common/Image'
 import Carousel, { CarouselItem } from '../common/Carousel'
 import useWidth from '../../hooks/useWidth'
 
+const BookCard = ({ book }: { book: Book }) => (
+  <Link href={`/books/${book.slug}`}>
+    <div className="grid mx-auto" style={{ gridTemplateRows: 'auto' }}>
+      <div className="w-48 mx-auto">
+        <Image image={book.cover_image} />
+      </div>
+      <h3 className="text-lg text-center mt-4 w-11/12">{book.title}</h3>
+    </div>
+  </Link>
+)
+
 const Books = ({ books }: { books: StrapiRecord<Book>[] }) => {
   const { isMobile } = useWidth()
   return (
@@ -22,19 +33,7 @@ const Books = ({ books }: { books: StrapiRecord<Book>[] }) => {
       <Carousel paused circles={false}>
         {books.map((book) => (
           <CarouselItem key={book.id}>
-            <Link href={`/books/${book.attributes.slug}`}>
-              <div
-                className="grid mx-auto"
-                style={{ gridTemplateRows: 'auto' }}
-              >
-                <div className="w-48 mx-auto">
-                  <Image image={book.attributes.cover_image} />
-                </div>
-                <h3 className="text-xl font-semibold mt-4">
-                  {book.attributes.title}
-                </h3>
-              </div>
-            </Link>
+            <BookCard book={book.attributes} />
           </CarouselItem>
         ))}
       </Carousel>

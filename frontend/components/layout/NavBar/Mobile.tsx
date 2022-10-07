@@ -16,7 +16,7 @@ const MobileNavBar = () => {
       {isOpen ? (
         <>
           <GrClose size={35} onClick={toggleOpen} />
-          <div className="grid w-full text-center justify-center gap-y-14 pt-8">
+          <div className="grid w-full text-center justify-center gap-y-14 pt-8 uppercase typewriter">
             <Link href="/">
               <a>Inicio</a>
             </Link>

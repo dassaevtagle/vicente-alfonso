@@ -6,16 +6,18 @@ import { CSSProperties } from 'react'
 type Props = {
   image: SingleStrapiResponse<Media>
   style?: CSSProperties
+  className?: string
   nextImageProps?: Omit<ImageProps, 'src' | 'alt'>
 }
 /* Wrapper of NextImage
   src, alt are not passed.
 */
-const Image = ({ image, style, nextImageProps }: Props) => {
+const Image = ({ image, style, className, nextImageProps }: Props) => {
   const { alternativeText, width, height } = image.data.attributes
 
   return (
     <NextImage
+      className={className}
       width={width}
       height={height}
       src={getStrapiMedia(image)}

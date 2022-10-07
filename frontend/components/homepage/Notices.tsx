@@ -4,6 +4,7 @@ import Carousel, { CarouselItem } from '../common/Carousel'
 import Modal from '../common/Modal'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import * as moment from 'moment'
 
 const NoticeCard = ({ notice }: { notice: Notice }) => (
   <div className="grid auto-rows-auto max-w-xs text-center px-1 xl:px-12">
@@ -14,30 +15,33 @@ const NoticeCard = ({ notice }: { notice: Notice }) => (
   </div>
 )
 
-const NoticeModal = ({ notice }: { notice: StrapiRecord<Notice> }) => (
-  <div
-    className="bg-white rounded overflow-y-scroll p-7 w-full"
-    style={{ height: '36rem' }}
-  >
-    <div className="relative flex items-center">
-      <div className="flex-grow border-t border-gray-400"></div>
-      <span
-        className="flex-shrink mx-4 text-gray-800 text-4xl times-new-roman uppercase"
-        style={{ letterSpacing: '10px' }}
-      >
-        <h2>Avisos</h2>
-      </span>
+const NoticeModal = ({ notice }: { notice: StrapiRecord<Notice> }) => {
+  const publishedAt = moment.default(notice.attributes.publishedAt).fromNow()
+  return (
+    <div
+      className="bg-white rounded overflow-y-scroll p-7 w-full"
+      style={{ height: '36rem' }}
+    >
+      <div className="relative flex items-center">
+        <div className="flex-grow border-t border-gray-400"></div>
+        <span
+          className="flex-shrink mx-4 text-gray-800 text-4xl times-new-roman uppercase"
+          style={{ letterSpacing: '10px' }}
+        >
+          <h2>Avisos</h2>
+        </span>
+      </div>
+      <h3 className="text-3xl">{notice.attributes.title}</h3>
+      <p>{publishedAt}</p>
+      <div className="mx-auto">
+        <Image image={notice.attributes.image} />
+      </div>
+      <div className="break-words">
+        <ReactMarkdown>{notice.attributes.description}</ReactMarkdown>
+      </div>
     </div>
-    <h3 className="text-3xl">{notice.attributes.title}</h3>
-    <p>{notice.attributes.publishedAt}</p>
-    <div className="mx-auto">
-      <Image image={notice.attributes.image} />
-    </div>
-    <div className="break-words">
-      <ReactMarkdown>{notice.attributes.description}</ReactMarkdown>
-    </div>
-  </div>
-)
+  )
+}
 
 type NoticesProps = {
   notices: StrapiRecord<Notice>[]

@@ -20,7 +20,7 @@ const Footer = ({
   const isOnScreen = useOnScreen({
     ref: footerTextRef,
     observerOptions: {
-      rootMargin: '-150px',
+      rootMargin: '-85px',
     },
     triggerOnce: true,
   })
@@ -43,7 +43,7 @@ const Footer = ({
       footerTextRef.current.classList.remove('text-transparent')
       footerTextRef.current.innerHTML =
         text.substring(0, index + 1) +
-        `<span aria-hidden="true" style="animation: caret 1s steps(1) infinite; border-right: .05em solid;"></span>`
+        `<span aria-hidden="true" style="animation: caret 1s steps(1) infinite; border-right: .07em solid;"></span>`
       // wait for a while and call this function again for next character
       setTimeout(function () {
         typeWriter(text, index + 1)
@@ -62,7 +62,7 @@ const Footer = ({
       <style>{caretAnimationCss}</style>
       <h3
         ref={footerTextRef}
-        className="relative text-transparent"
+        className="relative text-transparent typewriter font-semibold text-zinc-900"
         style={{ top: '18vw', fontSize: '3vmax' }}
       >
         Vicente Alfonso, {new Date().getFullYear()}

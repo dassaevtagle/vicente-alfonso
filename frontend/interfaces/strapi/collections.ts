@@ -30,6 +30,7 @@ export type Notice = {
   title: string
   image: SingleStrapiResponse<Media>
   valid_until: string
+  historical?: null | boolean
 }
 
 export type Photo = {

@@ -3,9 +3,16 @@
   src: url('../assets/fonts/Typewriter-Light.ttf');
   src: url('../assets/fonts/Typewriter-Regular.ttf');
 }
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url('../assets/fonts/SourceSansPro-ExtraLight.ttf');
+  src: url('../assets/fonts/SourceSansPro-Light.ttf');
+  src: url('../assets/fonts/SourceSansPro-LightItalic.ttf');
+  src: url('../assets/fonts/SourceSansPro-Regular.ttf');
+}
 
 .typewriter {
-  font-family: 'Typewriter'
+  font-family: 'Typewriter', serif;
 }
 
 .times-new-roman {

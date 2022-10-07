@@ -21,7 +21,7 @@ const imageCss: CSSProperties = {
 const About = ({ bio_photo, biography }: AboutProps) => {
   const [showFullBio, setShowFullBio] = useState<boolean>(false)
   const [bioDisplay, setBioDisplay] = useState<string>('')
-  const SHORT_BIO_LENGTH = 1000
+  const SHORT_BIO_LENGTH = 1300
 
   useEffect(() => {
     if (showFullBio) {
@@ -45,7 +45,7 @@ const About = ({ bio_photo, biography }: AboutProps) => {
         <ReactMarkdown>{bioDisplay}</ReactMarkdown>
       </div>
       <span className="flex justify-center" onClick={toggleBioDisplay}>
-        {showFullBio ? <FiChevronUp size={50} /> : <FiChevronDown size={50} />}
+        {showFullBio ? <FiChevronUp size={40} /> : <FiChevronDown size={40} />}
       </span>
     </div>
   )

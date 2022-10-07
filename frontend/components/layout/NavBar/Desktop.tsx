@@ -16,7 +16,7 @@ const DesktopNavBar = ({ displayName }: Props) => {
           Vicente Alfonso
         </h1>
       )}
-      <header className="sticky top-0 z-10 bg-white">
+      <header className="sticky top-0 z-10 bg-white uppercase typewriter">
         <nav>
           <VerticalLines>
             <div className="flex justify-evenly px-20">

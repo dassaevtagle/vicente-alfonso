@@ -31,6 +31,10 @@
     "valid_until": {
       "type": "date",
       "required": true
+    },
+    "historical": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

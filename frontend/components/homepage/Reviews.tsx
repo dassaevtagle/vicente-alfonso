@@ -11,7 +11,7 @@ export const Reviews = ({ reviews }: Props) => (
     <Carousel arrows={false}>
       {reviews.map((review) => (
         <CarouselItem key={review.id} widthPercentage={100}>
-          <div className="ml-auto italic text-right text-zinc-500">
+          <div className="ml-auto italic text-right text-zinc-500 px-1">
             <ReactMarkdown>{review.attributes.content}</ReactMarkdown>
             <span className="text-zinc-700">
               <ReactMarkdown>{review.attributes.author}</ReactMarkdown>

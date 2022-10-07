@@ -11,11 +11,11 @@ const ArticleCard = ({ article }: { article: Article }) => {
         className="w-full border-solid border-zinc-900 md:mb-5 px-4 pt-2 md:p-2"
         style={{ borderBottomWidth: '1px' }}
       >
-        <h2 className="font-semibold">{article.title}</h2>
+        <h2 className="font-semibold text-lg">{article.title}</h2>
         <span className="text-sm pr-3 font-light text-zinc-600 block leading-none border-l-4 border-solid pl-2">
           {article.description}
         </span>
-        <ReactMarkdown className="line-clamp-3 text-sm mt-4 indent-2">
+        <ReactMarkdown className="line-clamp-3 mt-4 indent-2">
           {article.content}
         </ReactMarkdown>
         {/* {article.category && article.category.data.attributes.name} */}
