@@ -13,6 +13,7 @@ export type Article = {
 export type Book = {
   title: string
   description: string
+  subtitle?: string
   published: boolean
   cover_image: SingleStrapiResponse<Media>
   slug: string

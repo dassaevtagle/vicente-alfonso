@@ -6,19 +6,22 @@ import ReactMarkdown from 'react-markdown'
 import Link from 'next/link'
 import * as moment from 'moment'
 
-
 const ArticleCard = ({ article }: { article: StrapiRecord<ArticleType> }) => (
   <div className="border-solid border-y-2 mb-3">
     <div className="grid grid-cols-12">
       <div className="col-span-8 md:col-span-9 self-center">
-        <span className='text-sm pl-2 md:pl-0 md:float-right text-zinc-800'>{moment.default(article.attributes.publishedAt).format("LL")}</span>
+        <span className="text-sm pl-2 md:pl-0 md:float-right text-zinc-800">
+          {moment.default(article.attributes.publishedAt).format('LL')}
+        </span>
         <h3
           className="uppercase times-new-roman"
           style={{ letterSpacing: '4px' }}
         >
           {article.attributes.title}
         </h3>
-        <span className="text-sm italic pl-2">{article.attributes.description}</span>
+        <span className="text-sm italic pl-2">
+          {article.attributes.description}
+        </span>
         <Link href={`/articles/${article.attributes.slug}`}>
           <a>
             <ReactMarkdown className="line-clamp-6 text-sm mt-2 hover:cursor-pointer">
