@@ -7,7 +7,7 @@ type Props = {
 }
 
 export const Reviews = ({ reviews }: Props) => (
-  <div className="px-3 pt-20 md:px-32 md:py-20">
+  <div className="px-3 py-10 md:px-32 md:py-20">
     <Carousel arrows={false}>
       {reviews.map((review) => (
         <CarouselItem key={review.id} widthPercentage={100}>

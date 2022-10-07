@@ -41,7 +41,9 @@ const Home = ({
         biography={homepage.attributes.biography}
       />
     </div>
-    <Books books={books} />
+    <div id="books">
+      <Books books={books} />
+    </div>
     <Reviews reviews={reviews} />
   </Layout>
 )

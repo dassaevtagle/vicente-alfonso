@@ -42,6 +42,7 @@ const Footer = ({
     if (index < text.length) {
       if (footerTextRef.current) {
         footerTextRef.current.classList.remove('text-transparent')
+        footerTextRef.current.classList.add('text-zinc-900')
       }
       footerTextRef.current.innerHTML =
         text.substring(0, index + 1) +
@@ -64,14 +65,13 @@ const Footer = ({
       <style>{caretAnimationCss}</style>
       <h3
         ref={footerTextRef}
-        className="relative text-transparent typewriter font-semibold text-zinc-900"
-        style={{ top: '18vw', fontSize: '3vmax' }}
+        className="relative text-transparent typewriter font-semibold top-[16vw] sm:top-[14vw] text-[1.3rem] sm:text-[1.7rem]"
       >
         Vicente Alfonso, {new Date().getFullYear()}
       </h3>
       <Image
         image={footer_image}
-        style={{ width: '100%', height: '60vw', objectFit: 'cover' }}
+        style={{ width: '100%'}}
       />
     </footer>
   )

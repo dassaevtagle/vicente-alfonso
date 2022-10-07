@@ -23,7 +23,7 @@ const DesktopNavBar = ({ displayName }: Props) => {
               <Link href="/">
                 <a>Inicio</a>
               </Link>
-              <Link href="/about">
+              <Link href="/#books">
                 <a>Libros</a>
               </Link>
               <Link href="/multimedia">

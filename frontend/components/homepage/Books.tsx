@@ -20,7 +20,7 @@ const BookCard = ({ book }: { book: Book }) => (
 const Books = ({ books }: { books: StrapiRecord<Book>[] }) => {
   const { isMobile } = useWidth()
   return (
-    <section className="w-full px-1 lg:px-14 pt-4">
+    <section className="w-full px-1 lg:px-14 pt-10">
       <div className="relative flex py-5 items-center">
         {!isMobile && (
           <div className="flex-grow border-t border-gray-400"></div>
