@@ -5,14 +5,16 @@ import Carousel, { CarouselItem } from '../common/Carousel'
 import useWidth from '../../hooks/useWidth'
 
 const BookCard = ({ book }: { book: Book }) => (
-  <Link href={`/books/${book.slug}`}>
-    <div className="grid mx-auto" style={{ gridTemplateRows: 'auto' }}>
-      <div className="w-48 mx-auto">
-        <Image image={book.cover_image} />
+  <div className='hover:cursor-pointer  mx-auto'>
+    <Link href={`/books/${book.slug}`}>
+      <div className="grid" style={{ gridTemplateRows: 'auto' }}>
+        <div className="w-48 mx-auto">
+          <Image image={book.cover_image} />
+        </div>
+        <h3 className="text-lg text-center mt-4 w-11/12">{book.title}</h3>
       </div>
-      <h3 className="text-lg text-center mt-4 w-11/12">{book.title}</h3>
-    </div>
-  </Link>
+    </Link>
+  </div>
 )
 
 const Books = ({ books }: { books: StrapiRecord<Book>[] }) => {

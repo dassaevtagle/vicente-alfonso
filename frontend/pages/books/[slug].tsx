@@ -19,9 +19,11 @@ const BookReviews = ({
   <Carousel arrows={false}>
     {reviews.data.map((review) => (
       <CarouselItem key={review.id} widthPercentage={100}>
-        <div className='mx-auto px-5 lg:px-44 my-20 lg:my-5'>
-          <ReactMarkdown className='text-center mb-10 italic'>{`"${review.attributes.content}"`}</ReactMarkdown>
-          <ReactMarkdown className='text-right'>{review.attributes.author}</ReactMarkdown>
+        <div className="mx-auto px-5 lg:px-44 my-20 lg:my-5">
+          <ReactMarkdown className="text-center mb-10 italic">{`"${review.attributes.content}"`}</ReactMarkdown>
+          <ReactMarkdown className="text-right">
+            {review.attributes.author}
+          </ReactMarkdown>
         </div>
       </CarouselItem>
     ))}

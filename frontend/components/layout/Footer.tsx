@@ -40,7 +40,9 @@ const Footer = ({
     index = index ?? 0
     //calls recursively until last index
     if (index < text.length) {
-      footerTextRef.current.classList.remove('text-transparent')
+      if (footerTextRef.current) {
+        footerTextRef.current.classList.remove('text-transparent')
+      }
       footerTextRef.current.innerHTML =
         text.substring(0, index + 1) +
         `<span aria-hidden="true" style="animation: caret 1s steps(1) infinite; border-right: .07em solid;"></span>`

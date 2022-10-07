@@ -15,7 +15,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
         <span className="text-sm pr-3 font-light text-zinc-600 block leading-none border-l-4 border-solid pl-2">
           {article.description}
         </span>
-        <ReactMarkdown className="line-clamp-3 mt-4 indent-2">
+        <ReactMarkdown className="line-clamp-3 mt-4 -mb-3 md:mb-0 indent-2 text-sm md:text-base">
           {article.content}
         </ReactMarkdown>
         {/* {article.category && article.category.data.attributes.name} */}
