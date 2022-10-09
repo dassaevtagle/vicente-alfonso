@@ -7,7 +7,7 @@
     "type-check": "tsc",
     "lint": "next lint",
     "format": "prettier --write .",
-    "export": "yarn run build && next export -o _static"
+    "export": "yarn install --production=false && rimraf dist && yarn build && yarn install --production && next export -o _static"
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.2",

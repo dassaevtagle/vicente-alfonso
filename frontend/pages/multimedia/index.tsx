@@ -19,7 +19,7 @@ type MultimediaProps = {
 const Multimedia = ({ photos }: MultimediaProps) => {
   const [showModal, setShowModal] = useState<boolean>(false)
   const [modalItem, setModalItem] = useState<number>(0)
-
+  //Opens modal
   const handlePhotoClick = (modalItemIndex: number) => {
     setModalItem(modalItemIndex)
     setShowModal(true)

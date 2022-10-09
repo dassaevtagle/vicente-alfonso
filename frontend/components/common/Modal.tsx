@@ -10,7 +10,7 @@ type Props = {
   modalItem?: number
   children: ReactElement | ReactElement[]
 }
-const   Modal = ({ children, show, onClose, modalItem }: Props) => {
+const Modal = ({ children, show, onClose, modalItem }: Props) => {
   if (!show) return null
   const CHILDREN_COUNT = React.Children.count(children)
   const childrenIsArray = Array.isArray(children)

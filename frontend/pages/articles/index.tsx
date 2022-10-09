@@ -52,7 +52,9 @@ const ArticleCard = ({ article }: { article: StrapiRecord<ArticleType> }) => (
 const Articles = ({ articles }: { articles: StrapiRecord<ArticleType>[] }) => {
   return (
     <Layout title={'Bloc de Notas'}>
-      <h2 className='text-center text-4xl times-new-roman italic py-2'>Bloc de notas</h2>
+      <h2 className="text-center text-4xl times-new-roman italic py-2">
+        Bloc de notas
+      </h2>
       <div className="mx-2 md:mx-36">
         {articles.map((article) => (
           <ArticleCard key={article.id} article={article} />
