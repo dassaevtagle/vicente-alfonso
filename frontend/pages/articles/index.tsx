@@ -7,7 +7,7 @@ import Link from 'next/link'
 import * as moment from 'moment'
 
 const ArticleCard = ({ article }: { article: StrapiRecord<ArticleType> }) => (
-  <div className="border-solid border-y-2 mb-3">
+  <div className="border-solid border-t-2">
     <div className="grid grid-cols-12">
       <div className="col-span-8 md:col-span-9 self-center">
         <span className="text-sm pl-2 md:pl-0 md:float-right text-zinc-800">
@@ -52,7 +52,7 @@ const ArticleCard = ({ article }: { article: StrapiRecord<ArticleType> }) => (
 const Articles = ({ articles }: { articles: StrapiRecord<ArticleType>[] }) => {
   return (
     <Layout title={'Bloc de Notas'}>
-      <h2>Bloc de notas</h2>
+      <h2 className='text-center text-4xl times-new-roman italic py-2'>Bloc de notas</h2>
       <div className="mx-2 md:mx-36">
         {articles.map((article) => (
           <ArticleCard key={article.id} article={article} />

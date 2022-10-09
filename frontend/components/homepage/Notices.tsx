@@ -9,7 +9,7 @@ import * as moment from 'moment'
 const NoticeCard = ({ notice }: { notice: Notice }) => (
   <div className="grid auto-rows-auto max-w-xs text-center px-1 xl:px-12">
     <Image image={notice.image} />
-    <h2 className="font-semibold md:font-bold text-sm md:text-base">
+    <h2 className="font-medium text-sm md:text-[1rem]">
       {notice.title}
     </h2>
   </div>

@@ -5,6 +5,7 @@ import Image from '../../components/common/Image'
 import { fetchAPI } from '../../lib/api'
 import { Article as ArticleType, StrapiRecord } from '../../interfaces/strapi'
 import ReactMarkdown from 'react-markdown'
+import * as moment from 'moment'
 
 type ArticleProps = {
   article: StrapiRecord<ArticleType>
@@ -21,9 +22,13 @@ const Article = ({ article }: ArticleProps) => {
   return (
     <Layout title="Blog">
       <Seo seo={seo} />
-      <h1 className="text-2xl">{article.attributes.title}</h1>
-      <Image image={article.attributes.image} />
-      <ReactMarkdown>{article.attributes.content}</ReactMarkdown>
+      <div className="container mx-auto px-2 md:px-20 pt-3">
+      <h1 className="text-4xl text-left times-new-roman italic font-medium">{article.attributes.title}</h1>
+      <span className="font-semibold">{moment.default(article.attributes.publishedAt).format('LL')}</span>
+      <Image image={article.attributes.image} className="mx-auto mt-3 border-solid border-2 rounded-[3px]"/>
+      <p className='text-indent-2 text-zinc-600 text-center text-lg italic p-5'>{article.attributes.description}</p>
+      <ReactMarkdown className='px-2 md:px-4 text-justify'>{article.attributes.content}</ReactMarkdown>
+      </div>
     </Layout>
   )
 }
