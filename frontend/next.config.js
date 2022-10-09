@@ -1,6 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
+    unoptimized: true,
     loader: 'default',
     domains: ['localhost'],
   },
