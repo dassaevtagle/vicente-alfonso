@@ -43,10 +43,10 @@ const Footer = ({
       if (footerTextRef.current) {
         footerTextRef.current.classList.remove('text-transparent')
         footerTextRef.current.classList.add('text-zinc-900')
+        footerTextRef.current.innerHTML =
+          text.substring(0, index + 1) +
+          `<span aria-hidden="true" style="animation: caret 1s steps(1) infinite; border-right: .07em solid;"></span>`
       }
-      footerTextRef.current.innerHTML =
-        text.substring(0, index + 1) +
-        `<span aria-hidden="true" style="animation: caret 1s steps(1) infinite; border-right: .07em solid;"></span>`
       // wait for a while and call this function again for next character
       setTimeout(function () {
         typeWriter(text, index + 1)

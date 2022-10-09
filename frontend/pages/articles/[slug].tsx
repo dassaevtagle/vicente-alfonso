@@ -23,10 +23,10 @@ const Article = ({ article }: ArticleProps) => {
     <Layout title="Blog">
       <Seo seo={seo} />
       <div className="container mx-auto px-2 md:px-20 pt-3">
-      <h1 className="text-4xl text-left times-new-roman italic font-medium">{article.attributes.title}</h1>
-      <span className="font-semibold">{moment.default(article.attributes.publishedAt).format('LL')}</span>
+      <h1 className="text-4xl text-left times-new-roman italic">{article.attributes.title}</h1>
+      <span className="font-light text-zinc-600">{moment.default(article.attributes.publishedAt).format('LL')}</span>
       <Image image={article.attributes.image} className="mx-auto mt-3 border-solid border-2 rounded-[3px]"/>
-      <p className='text-indent-2 text-zinc-600 text-center text-lg italic p-5'>{article.attributes.description}</p>
+      <p className='text-indent-2 text-zinc-900 text-center text-lg italic p-5'>{article.attributes.description}</p>
       <ReactMarkdown className='px-2 md:px-4 text-justify'>{article.attributes.content}</ReactMarkdown>
       </div>
     </Layout>
