@@ -66,7 +66,6 @@ export async function getStaticProps() {
   const articlesRes = await fetchAPI<ArticleType>('/articles', {
     populate: '*',
   })
-  console.log(articlesRes)
   return {
     props: { articles: articlesRes.data },
     revalidate: 1,
