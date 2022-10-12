@@ -4,14 +4,16 @@ module.exports = {
   //API call to rebuild the back and front in DigitalOcean
   async rebuildDOApp(param) {
     try {
-      await axios(process.env.DO_APP_API_ENDPOINT, {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.DO_APP_API_TOKEN}`
+      await axios.post(
+        process.env.DO_APP_API_ENDPOINT,
+        {
+          force_build: true
         },
-        body: JSON.stringify({force_build: true})
-      })
+        {
+          headers: {
+            'Authorization': `Bearer ${process.env.DO_APP_API_TOKEN}`
+          }
+        })
     } catch(e) {
       console.error(e)
     }
