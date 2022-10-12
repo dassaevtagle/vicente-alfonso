@@ -16,12 +16,17 @@ const NavBar = ({
   email,
 }: NavBarProps) => {
   const { isMobile } = useWidth()
+  const links = {
+    facebook: facebook_url,
+    twitter: twitter_url,
+    email,
+  }
   return (
     <>
       {isMobile ? (
-        <MobileNavBar />
+        <MobileNavBar links={links} />
       ) : (
-        <DesktopNavBar displayName={displayName} />
+        <DesktopNavBar displayName={displayName} links={links} />
       )}
     </>
   )

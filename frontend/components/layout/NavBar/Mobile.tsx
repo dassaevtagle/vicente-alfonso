@@ -1,10 +1,25 @@
 import Link from 'next/link'
 import { useState } from 'react'
+import { FiExternalLink } from 'react-icons/fi'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { GrClose } from 'react-icons/gr'
-const MobileNavBar = () => {
+import ExternalLink from '../../common/ExternalLink'
+
+type Props = {
+  links: {
+    facebook: string
+    twitter: string
+    email: string
+  }
+}
+
+const MobileNavBar = ({ links }: Props) => {
+  const [showContact, setShowContact] = useState<boolean>(false)
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const toggleOpen = () => setIsOpen(!isOpen)
+  const toggleOpen = () => {
+    setIsOpen(!isOpen)
+    setShowContact(false)
+  }
   return (
     <header
       className="w-full flex flex-wrap justify-between px-4 py-4 border-b-2 sticky top-0 z-10 bg-white"
@@ -29,9 +44,34 @@ const MobileNavBar = () => {
             <Link href="/articles">
               <a>Bloc de notas</a>
             </Link>
-            <Link href="/">
+            <div onClick={() => setShowContact(!showContact)}>
               <a>Contacto</a>
-            </Link>
+            </div>
+            {showContact && (
+              <ul
+                className={
+                  'grid w-full justify-center hover:cursor-pointer gap-y-4 -mt-6 source-sans-pro capitalize'
+                }
+              >
+                {Array.from(Object.entries(links)).map((url, idx) => {
+                  let [linkName, linkUrl] = url
+                  const isEmail: boolean = linkName === 'email' ? true : false
+                  if (isEmail) linkName = linkUrl
+                  return (
+                    <ExternalLink
+                      key={idx}
+                      href={linkUrl}
+                      classes={`${isEmail ? 'lowercase' : ''} flex mx-auto`}
+                    >
+                      {linkName}{' '}
+                      {!isEmail && (
+                        <FiExternalLink className="my-auto ml-2"></FiExternalLink>
+                      )}
+                    </ExternalLink>
+                  )
+                })}
+              </ul>
+            )}
           </div>
         </>
       ) : (

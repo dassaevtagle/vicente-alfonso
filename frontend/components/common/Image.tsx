@@ -13,7 +13,7 @@ type Props = {
   src, alt are not passed.
 */
 const Image = ({ image, style, className, nextImageProps }: Props) => {
-  if(!image.data) return <></> 
+  if (!image.data) return <></>
   const { alternativeText, width, height } = image.data.attributes
 
   return (
