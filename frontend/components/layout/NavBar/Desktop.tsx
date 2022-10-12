@@ -26,7 +26,7 @@ const DesktopNavBar = ({ displayName, links }: Props) => {
       <header className="sticky top-0 z-10 bg-white uppercase typewriter">
         <nav>
           <VerticalLines>
-            <div className="flex justify-evenly px-20">
+            <ul className="flex justify-evenly px-20">
               <Link href="/">
                 <a>Inicio</a>
               </Link>
@@ -39,14 +39,14 @@ const DesktopNavBar = ({ displayName, links }: Props) => {
               <Link href="/articles">
                 <a>Bloc de notas</a>
               </Link>
-              <div onClick={() => setShowContact(!showContact)}>
+              <div onClick={() => setShowContact(!showContact)} className="hover:cursor-pointer">
                 <a>Contacto</a>
               </div>
-            </div>
+            </ul>
             {showContact && (
               <ul
                 className={
-                  'grid w-full justify-center hover:cursor-pointer gap-y-4 pt-3 source-sans-pro capitalize'
+                  'grid w-full justify-center gap-y-4 pt-3 source-sans-pro capitalize'
                 }
               >
                 {Array.from(Object.entries(links)).map((url, idx) => {
@@ -56,8 +56,8 @@ const DesktopNavBar = ({ displayName, links }: Props) => {
                   return (
                     <ExternalLink
                       key={idx}
-                      href={linkUrl}
-                      classes={`${isEmail ? 'lowercase' : ''} flex mx-auto`}
+                      href={`${isEmail ? 'mailto:' : ''}`+linkUrl}
+                      classes={`${isEmail ? 'lowercase' : ''} flex mx-auto hover:cursor-pointer`}
                     >
                       {linkName}{' '}
                       {!isEmail && (
