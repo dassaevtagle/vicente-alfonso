@@ -27,7 +27,7 @@ const Multimedia = ({ photos }: MultimediaProps) => {
 
   return (
     <Layout title={'Multimedia'}>
-      <div className="container mx-auto mt-3 columns-3 gap-2 break-inside-avoid">
+      <div className="container mx-auto mt-3 columns-2 sm:columns-3 gap-2 break-inside-avoid">
         {photos.map((photo, idx) => (
           <div
             key={photo.id}
@@ -57,10 +57,11 @@ const Multimedia = ({ photos }: MultimediaProps) => {
 export async function getStaticProps() {
   const photosRes = await fetchAPI<Photo>('/photos', {
     populate: '*',
+/*  Temporarily disabling this option until pagination is made.   
     pagination: {
       page: 1,
       pageSize: 9,
-    },
+    }, */
   })
   return {
     props: {
