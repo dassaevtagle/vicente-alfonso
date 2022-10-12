@@ -6,6 +6,7 @@ import { fetchAPI } from '../lib/api'
 import { getStrapiMedia } from '../lib/media'
 import '../styles/globals.css'
 import 'moment/locale/es-mx'
+import { useRouter } from 'next/router'
 
 type MyAppProps = AppProps & {
   pageProps: { global: StrapiRecord<Global> }
@@ -16,7 +17,7 @@ export const GlobalContext = createContext<Global | null>(null)
 
 const MyApp = ({ Component, pageProps }: MyAppProps) => {
   const { global } = pageProps
-
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -26,7 +27,7 @@ const MyApp = ({ Component, pageProps }: MyAppProps) => {
         />
       </Head>
       <GlobalContext.Provider value={global.attributes}>
-        <Component {...pageProps} />
+        <Component key={router.asPath} {...pageProps} />
       </GlobalContext.Provider>
     </>
   )
