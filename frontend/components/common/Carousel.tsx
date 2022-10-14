@@ -21,7 +21,7 @@ export const CarouselItem = ({
   const { isMobile } = useWidth()
   return (
     <div
-      className="inline-flex whitespace-normal align-top"
+      className="inline-flex whitespace-normal align-top justify-center"
       style={{
         width: isMobile ? `${mobilePercentage}%` : `${widthPercentage}%`,
       }}
@@ -133,7 +133,7 @@ const Carousel = ({
     >
       {arrows && (
         <button
-          className="place-self-center h-full text-gray-400 hover:text-gray-500"
+          className="place-self-center h-full text-gray-400 hover:text-primary-yellow"
           onClick={goPrevious}
         >
           <FiChevronLeft size={30} />
@@ -160,7 +160,7 @@ const Carousel = ({
       </div>
       {arrows && (
         <button
-          className="place-self-center h-full text-gray-400 hover:text-gray-500"
+          className="place-self-center h-full text-gray-400 hover:text-primary-yellow"
           onClick={goNext}
         >
           <FiChevronRight size={30} />
@@ -176,8 +176,8 @@ const Carousel = ({
               <div
                 key={index}
                 className={`${
-                  activeIndex === index ? 'bg-gray-500' : 'bg-gray-300'
-                } rounded-full w-3 h-3 inline-block hover:cursor-pointer hover:bg-gray-500`}
+                  activeIndex === index ? 'bg-primary-yellow' : 'bg-gray-300'
+                } rounded-full w-3 h-3 inline-block hover:cursor-pointer hover:bg-primary-yellow`}
                 onClick={() => setActiveIndex(index)}
               ></div>
             )

@@ -23,9 +23,8 @@ const DesktopNavBar = ({ displayName, links }: Props) => {
           Vicente Alfonso
         </h1>
       )}
-      <header className="sticky top-0 z-10 bg-white uppercase typewriter">
+      <header className="sticky top-0 z-10 uppercase source-sans-pro border-b-solid border-b-[1px] border-b-black py-3 bg-zinc-900 text-white" style={{ boxShadow: '0px 6px 6px rgba(0, 0, 0, 0.25)'}}>
         <nav>
-          <VerticalLines>
             <ul className="flex justify-evenly px-20">
               <Link href="/">
                 <a>Inicio</a>
@@ -73,7 +72,6 @@ const DesktopNavBar = ({ displayName, links }: Props) => {
                 })}
               </ul>
             )}
-          </VerticalLines>
         </nav>
       </header>
     </>

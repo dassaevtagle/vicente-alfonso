@@ -6,10 +6,24 @@ import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import * as moment from 'moment'
 
-const NoticeCard = ({ notice }: { notice: Notice }) => (
-  <div className="grid auto-rows-auto max-w-xs text-center px-1 xl:px-12">
-    <Image image={notice.image} />
-    <h2 className="font-medium text-sm md:text-[1rem]">{notice.title}</h2>
+const NoticeCard = ({ notice }: { notice: StrapiRecord<Notice> }) => (
+  <div className="grid auto-rows-auto lg:h-[23rem] lg:max-w-[43rem] object-cover px-1 xl:px-12 justify-items-center">
+    <Image
+      image={notice.attributes.image}
+      className="object-cover h-full w-full border-solid border-[1px] hover:brightness-110 hover:saturate-[1.1]"
+    />
+    <div className='absolute bottom-[22px] w-full p-3 bg-primary-gray/90 '>
+    <span className='source-sans-pro text-gray-700 uppercase text-sm'>
+      {notice.attributes.historical ?
+        'Histórico'
+        :
+        moment.default(notice.attributes.publishedAt).fromNow()
+      }
+    </span>
+    <h2 className="font-semibold text-[1.4rem] times-new-roman text-gray-900">
+      {notice.attributes.title}
+    </h2>
+    </div>
   </div>
 )
 
@@ -57,12 +71,16 @@ const Notices = ({ notices }: NoticesProps) => {
   }
 
   return (
-    <div className="w-full pt-5 md:px-36">
+    <div className="w-full pt-5 md:px-28">
       <Carousel intervalSeconds={4} arrows={false}>
         {notices.map((notice, idx) => (
-          <CarouselItem key={notice.id} mobilePercentage={50}>
+          <CarouselItem
+            key={notice.id}
+            mobilePercentage={100}
+            widthPercentage={100}
+          >
             <div onClick={() => handleNoticeClick(idx)}>
-              <NoticeCard notice={notice.attributes} />
+              <NoticeCard notice={notice} />
             </div>
           </CarouselItem>
         ))}
