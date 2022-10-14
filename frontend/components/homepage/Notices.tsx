@@ -7,12 +7,12 @@ import ReactMarkdown from 'react-markdown'
 import * as moment from 'moment'
 
 const NoticeCard = ({ notice }: { notice: StrapiRecord<Notice> }) => (
-  <div className="grid auto-rows-auto lg:max-h-[25rem] lg:max-w-[50rem] px-1 xl:px-12 justify-items-center">
+  <div className="grid auto-rows-auto lg:max-h-[25rem] lg:max-w-[50rem] xl:px-12 justify-items-center">
     <Image
       image={notice.attributes.image}
       className="object-cover min-h-full min-w-full hover:brightness-110 hover:saturate-[1.1]"
     />
-    <div className="absolute bottom-[0] w-11/12 bg-white/70">
+    <div className="absolute bottom-[0] w-full md:w-11/12 bg-white/70">
       <div className="bg-primary-yellow p-3">
         <span className="source-sans-pro text-gray-700 uppercase text-sm">
           {notice.attributes.historical

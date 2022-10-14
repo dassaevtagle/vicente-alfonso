@@ -10,6 +10,7 @@ import {
 } from '../../interfaces/strapi'
 import ReactMarkdown from 'react-markdown'
 import Carousel, { CarouselItem } from '../../components/common/Carousel'
+import htmlParse from 'html-react-parser'
 
 const BookReviews = ({
   reviews,
@@ -33,25 +34,24 @@ const BookReviews = ({
 const Book = ({ book }: { book: StrapiRecord<BookType> }) => {
   return (
     <Layout title={book.attributes.title}>
-      <div className="grid md:grid-cols-12 sm:p-10 justify-items-center items-center">
+      <div className="grid md:grid-cols-12 sm:p-8 justify-items-center items-top">
         {/* Book content */}
-        <div className="md:col-span-8 pt-4 lg:p-10 ">
-          <div className="pl-4">
-            <h1 className="text-4xl italic times-new-roman indent-2">
+        <div className="order-last md:order-first md:col-span-7 pt-4 lg:px-10 lg:pt-0 ">
+          <div className="pl-4 mb-8 md:mb-12">
+            <h1 className="text-4xl italic times-new-roman indent-2 self-baseline">
               {book.attributes.title}
             </h1>
             <span className="text-sm text-zinc-700">
               {book.attributes.subtitle && book.attributes.subtitle}
             </span>
           </div>
-          <ReactMarkdown className="px-4 py-5 text-justify sm:p-12">
-            {book.attributes.description}
-          </ReactMarkdown>
+          <div className='mt-3 mx-auto mb-6 md:mb-0 w-11/12 md:w-10/12'>
+            {htmlParse(book.attributes.description)}
+          </div>
         </div>
         {/* Book image */}
         <Image
-          className="w-auto md:h-96 md:col-span-4 mx-4 md:m-0 border-solid border-2"
-          style={{ borderRadius: '2px' }}
+          className="object-cover w-[20rem] md:h-[31rem] md:col-span-5 mx-4 md:m-0 border-solid border-2 rounded-[2px] self-baseline mt-10 md:mt-0"
           image={book.attributes.cover_image}
         />
       </div>

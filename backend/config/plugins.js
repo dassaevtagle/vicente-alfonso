@@ -3,12 +3,16 @@ module.exports = ({ env }) => ({
     enabled: true,
     config:{
       editor:{
+        alignment: {
+          options: [ 'left', 'right', 'center', 'justify' ]
+        },
         toolbar: {
           items: [
             'paragraph',
             'heading1',
             'heading2',
             '|',
+            'alignment',
             'bulletedList',
             'todoList',
             'numberedList',
