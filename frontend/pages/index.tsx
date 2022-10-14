@@ -33,17 +33,13 @@ const Home = ({
 }: HomeStaticProps) => (
   <Layout displayName title="Inicio">
     <Seo seo={homepage.attributes.seo} />
-    <section className="lg:grid lg:grid-cols-[70%_30%] mt-4">
-      <div>
-        <Notices notices={notices} />
-        <Articles articles={articles} />
-      </div>
-      <div>
-        <About
-          bio_photo={homepage.attributes.bio_photo}
-          biography={homepage.attributes.biography}
-        />
-      </div>
+    <Notices notices={notices} />
+    <section className="lg:grid lg:grid-cols-[66.66%_33.33%] mt-4">
+      <Articles articles={articles} />
+      <About
+        bio_photo={homepage.attributes.bio_photo}
+        biography={homepage.attributes.biography}
+      />
     </section>
     <div id="books">
       <Books books={books} />
