@@ -39,7 +39,7 @@ const Articles = ({ articles }: ArticlesProps) => {
           </div>
         </VerticalLines>
       </div>
-      <div className="md:px-16 mx-auto">
+      <div className="md:px-10 mx-auto">
         {articles.map((article) => (
           <ArticleCard key={article.id} article={article.attributes} />
         ))}

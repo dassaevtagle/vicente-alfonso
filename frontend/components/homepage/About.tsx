@@ -8,20 +8,10 @@ type AboutProps = {
   biography: string
 }
 
-const imageCss: CSSProperties = {
-  borderRadius: '50%',
-  width: '200px',
-  height: '200px',
-  objectFit: 'cover',
-  shapeOutside: 'circle()',
-  float: 'left',
-  marginRight: '40px',
-}
-
 const About = ({ bio_photo, biography }: AboutProps) => {
   const [showFullBio, setShowFullBio] = useState<boolean>(false)
   const [bioDisplay, setBioDisplay] = useState<string>('')
-  const SHORT_BIO_LENGTH = 1300
+  const SHORT_BIO_LENGTH = 1000
 
   useEffect(() => {
     if (showFullBio) {
@@ -39,8 +29,12 @@ const About = ({ bio_photo, biography }: AboutProps) => {
   const toggleBioDisplay = () => setShowFullBio(!showFullBio)
 
   return (
-    <div className="px-4 mt-12 md:m-0">
-      <Image image={bio_photo} style={imageCss} />
+    <div className="px-4 md:pr-4 md:pl-0 mt-12 md:m-0">
+      <Image
+        image={bio_photo}
+        className="rounded-[50%] w-[180px] h-[180px] object-cover float-left mr-[25px]"
+        style={{ shapeOutside: 'circle()' }}
+      />
       <div className="pt-2 text-justify text-sm md:text-base">
         <ReactMarkdown>{bioDisplay}</ReactMarkdown>
       </div>

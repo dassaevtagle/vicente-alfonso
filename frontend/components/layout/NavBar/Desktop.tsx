@@ -39,7 +39,10 @@ const DesktopNavBar = ({ displayName, links }: Props) => {
               <Link href="/articles">
                 <a>Bloc de notas</a>
               </Link>
-              <div onClick={() => setShowContact(!showContact)} className="hover:cursor-pointer">
+              <div
+                onClick={() => setShowContact(!showContact)}
+                className="hover:cursor-pointer"
+              >
                 <a>Contacto</a>
               </div>
             </ul>
@@ -56,8 +59,10 @@ const DesktopNavBar = ({ displayName, links }: Props) => {
                   return (
                     <ExternalLink
                       key={idx}
-                      href={`${isEmail ? 'mailto:' : ''}`+linkUrl}
-                      classes={`${isEmail ? 'lowercase' : ''} flex mx-auto hover:cursor-pointer`}
+                      href={`${isEmail ? 'mailto:' : ''}` + linkUrl}
+                      classes={`${
+                        isEmail ? 'lowercase' : ''
+                      } flex mx-auto hover:cursor-pointer`}
                     >
                       {linkName}{' '}
                       {!isEmail && (

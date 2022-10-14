@@ -28,9 +28,7 @@ const Layout = ({ children, title, displayName = false }: Props) => {
         twitter_url={twitter_url}
         email={email}
       />
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
       <Footer footer_image={footer_image} />
       <div id="modals"></div>
     </div>

@@ -57,7 +57,7 @@ const Multimedia = ({ photos }: MultimediaProps) => {
 export async function getStaticProps() {
   const photosRes = await fetchAPI<Photo>('/photos', {
     populate: '*',
-/*  Temporarily disabling this option until pagination is made.   
+    /*  Temporarily disabling this option until pagination is made.   
     pagination: {
       page: 1,
       pageSize: 9,

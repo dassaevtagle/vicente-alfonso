@@ -34,13 +34,13 @@ const Home = ({
   <Layout displayName title="Inicio">
     <Seo seo={homepage.attributes.seo} />
     <Notices notices={notices} />
-    <div className="md:grid md:grid-cols-2 mt-4">
+    <section className="lg:grid lg:grid-cols-[70%_30%] mt-4">
       <Articles articles={articles} />
       <About
         bio_photo={homepage.attributes.bio_photo}
         biography={homepage.attributes.biography}
       />
-    </div>
+    </section>
     <div id="books">
       <Books books={books} />
     </div>

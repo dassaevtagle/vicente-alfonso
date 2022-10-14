@@ -13,9 +13,7 @@ const ArticleCard = ({ article }: { article: StrapiRecord<ArticleType> }) => (
         <span className="text-sm pl-2 md:pl-0 float-right text-zinc-800">
           {moment.default(article.attributes.publishedAt).format('LL')}
         </span>
-        <h3
-          className="uppercase times-new-roman tracking-[4px] text-sm sm:text-base"
-        >
+        <h3 className="uppercase times-new-roman tracking-[4px] text-sm sm:text-base">
           {article.attributes.title}
         </h3>
         <p className="text-xs sm:text-sm italic pl-2">
@@ -29,9 +27,7 @@ const ArticleCard = ({ article }: { article: StrapiRecord<ArticleType> }) => (
           </a>
         </Link>
         <span className="hidden sm:block hover:cursor-pointer float-right text-xs hover:text-white hover:bg-gray-900 border-black border-solid border-[1px] rounded-[2px] my-2 p-1">
-          <Link
-            href={`/articles/${article.attributes.slug}`}
-            >
+          <Link href={`/articles/${article.attributes.slug}`}>
             <a>Seguir Leyendo</a>
           </Link>
         </span>
