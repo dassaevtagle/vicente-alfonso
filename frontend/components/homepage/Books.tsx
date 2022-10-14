@@ -5,13 +5,18 @@ import Carousel, { CarouselItem } from '../common/Carousel'
 import useWidth from '../../hooks/useWidth'
 
 const BookCard = ({ book }: { book: Book }) => (
-  <div className="hover:cursor-pointer  mx-auto">
+  <div className="hover:cursor-pointer mt-3 mx-auto mb-6">
     <Link href={`/books/${book.slug}`}>
-      <div className="grid" style={{ gridTemplateRows: 'auto' }}>
-        <div className="w-48 mx-auto">
-          <Image image={book.cover_image} />
+      <div className="grid grid-rows-[auto]">
+        <div className="mx-auto">
+          <Image
+            image={book.cover_image}
+            className="w-48 object-cover h-[300px] drop-shadow-[0_25px_25px_rgba(0,0,0,0.23)]"
+          />
         </div>
-        <h3 className="text-lg text-center mt-4 w-11/12">{book.title}</h3>
+        <h3 className="text-xl text-center mt-4 times-new-roman font-medium">
+          {book.title}
+        </h3>
       </div>
     </Link>
   </div>
@@ -20,15 +25,12 @@ const BookCard = ({ book }: { book: Book }) => (
 const Books = ({ books }: { books: StrapiRecord<Book>[] }) => {
   const { isMobile } = useWidth()
   return (
-    <section className="w-full px-1 lg:px-14 pt-10 mt-2 bg-primary-gray/30">
+    <section className="w-full px-1 lg:px-14 pt-6 mt-2 bg-primary-gray/30">
       <div className="relative flex py-3 items-center">
         {!isMobile && (
           <div className="flex-grow border-t border-gray-400"></div>
         )}
-        <span
-          className="flex-shrink mx-auto my-3 md:my-0 md:mx-4 text-gray-800 text-4xl times-new-roman uppercase"
-          style={{ letterSpacing: '20px' }}
-        >
+        <span className="flex-shrink mx-auto my-3 md:my-0 md:mx-4 text-gray-800 text-4xl times-new-roman uppercase tracking-[20px]">
           <h2>Libros</h2>
         </span>
       </div>

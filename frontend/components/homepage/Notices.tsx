@@ -7,20 +7,22 @@ import ReactMarkdown from 'react-markdown'
 import * as moment from 'moment'
 
 const NoticeCard = ({ notice }: { notice: StrapiRecord<Notice> }) => (
-  <div className="grid auto-rows-auto lg:max-h-[22rem] lg:w-[38rem] px-1 xl:px-12 justify-items-center">
+  <div className="grid auto-rows-auto lg:max-h-[25rem] lg:max-w-[50rem] px-1 xl:px-12 justify-items-center">
     <Image
       image={notice.attributes.image}
-      className="object-cover h-full w-full hover:brightness-110 hover:saturate-[1.1]"
+      className="object-cover min-h-full min-w-full hover:brightness-110 hover:saturate-[1.1]"
     />
-    <div className="absolute bottom-[22px] w-10/12 p-3 bg-primary-gray/90 ">
-      <span className="source-sans-pro text-gray-700 uppercase text-sm">
-        {notice.attributes.historical
-          ? 'Histórico'
-          : moment.default(notice.attributes.publishedAt).fromNow()}
-      </span>
-      <h2 className="font-semibold text-[1.4rem] times-new-roman text-gray-900">
-        {notice.attributes.title}
-      </h2>
+    <div className="absolute bottom-[0] w-11/12 bg-white/70">
+      <div className="bg-primary-yellow p-3">
+        <span className="source-sans-pro text-gray-700 uppercase text-sm">
+          {notice.attributes.historical
+            ? 'Histórico'
+            : moment.default(notice.attributes.publishedAt).fromNow()}
+        </span>
+        <h2 className="font-semibold text-[1.4rem] times-new-roman text-gray-900">
+          {notice.attributes.title}
+        </h2>
+      </div>
     </div>
   </div>
 )
@@ -69,7 +71,7 @@ const Notices = ({ notices }: NoticesProps) => {
   }
 
   return (
-    <div className="w-full pt-5 md:px-28">
+    <div className="w-full pt-5 md:px-52 bg-gradient-to-b from-primary-gray/30 to-white">
       <Carousel intervalSeconds={4} arrows={false}>
         {notices.map((notice, idx) => (
           <CarouselItem
