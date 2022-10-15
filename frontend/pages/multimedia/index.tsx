@@ -7,7 +7,7 @@ import Modal from '../../components/common/Modal'
 
 const PhotoModal = ({ photo }: { photo: Photo }) => (
   <div className="grid justify-items-center ">
-    <Image image={photo.file} className='w-auto max-h-[90vh]' />
+    <Image image={photo.file} className="w-auto max-h-[90vh]" />
     <span className="text-white mt-2 text-xl">{`${photo.description}, ${photo.year}`}</span>
   </div>
 )

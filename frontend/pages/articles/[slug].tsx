@@ -22,13 +22,13 @@ const Article = ({ article }: ArticleProps) => {
   return (
     <Layout title="Blog">
       <Seo seo={seo} />
-      <div className="container mx-auto px-2 md:px-20 pt-3">
-        <h1 className="text-4xl text-left times-new-roman italic">
+      <div className="container mx-auto px-2 md:px-20 pt-8">
+        <h1 className="text-5xl text-left times-new-roman italic">
           {article.attributes.title}
         </h1>
-        <span className="font-light text-zinc-600">
+        <div className="font-light text-zinc-600 border-solid border-l-primary-yellow border-l-4 pl-2 mt-3">
           {moment.default(article.attributes.publishedAt).format('LL')}
-        </span>
+        </div>
         <Image
           image={article.attributes.image}
           className="mx-auto mt-3 border-solid border-2 rounded-[3px]"
@@ -36,7 +36,7 @@ const Article = ({ article }: ArticleProps) => {
         <p className="text-indent-2 text-zinc-900 text-center text-lg italic p-5">
           {article.attributes.description}
         </p>
-        <div className="px-2 md:px-4 text-justify">
+        <div className="px-2 md:px-32 text-justify text-2xl times-new-roman">
           {htmlParse(article.attributes.content)}
         </div>
       </div>

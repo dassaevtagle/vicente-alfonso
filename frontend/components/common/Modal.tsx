@@ -8,7 +8,7 @@ type Props = {
   show: boolean
   onClose: () => void
   modalItem?: number
-  children: ReactElement | ReactElement[]
+  children: ReactElement | ReactElement[] | HTMLDivElement
 }
 const Modal = ({ children, show, onClose, modalItem }: Props) => {
   if (!show) return null
