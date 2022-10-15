@@ -34,7 +34,7 @@ const Home = ({
   <Layout displayName title="Inicio">
     <Seo seo={homepage.attributes.seo} />
     <Notices notices={notices} />
-    <section className="lg:grid lg:grid-cols-[66.66%_33.33%] mt-4">
+    <section className="md:grid md:grid-cols-[66.66%_33.33%] mt-4">
       <Articles articles={articles} />
       <About
         bio_photo={homepage.attributes.bio_photo}

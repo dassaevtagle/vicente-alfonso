@@ -12,7 +12,7 @@ type AboutProps = {
 const About = ({ bio_photo, biography }: AboutProps) => {
   const [showFullBio, setShowFullBio] = useState<boolean>(false)
   const [bioDisplay, setBioDisplay] = useState<string>('')
-  const SHORT_BIO_LENGTH = 1000
+  const SHORT_BIO_LENGTH = 700
 
   useEffect(() => {
     handleToggleBio()
@@ -40,7 +40,7 @@ const About = ({ bio_photo, biography }: AboutProps) => {
         className="rounded-[50%] w-[180px] h-[180px] object-cover float-left mr-[25px]"
         style={{ shapeOutside: 'circle()' }}
       />
-      <div className="pt-2 text-justify text-sm md:text-base">
+      <div className="pt-2 text-justify md:text-base">
         <div>{htmlParse(bioDisplay)}</div>
       </div>
       <span className="flex justify-center" onClick={toggleBioDisplay}>

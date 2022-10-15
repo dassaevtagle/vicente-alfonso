@@ -9,7 +9,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
     <Link href={`/articles/${article.slug}`}>
       <div className="w-full border-solid border-zinc-900 md:mb-5 px-4 pt-2 md:p-2 border-b-[1px]">
         <h2 className="font-semibold text-lg">{article.title}</h2>
-        <span className="text-sm pr-3 font-light text-zinc-600 block leading-none border-l-4 border-solid pl-2">
+        <span className="text-sm pr-3 font-light text-zinc-600 block leading-none border-l-4 border-solid border-primary-yellow pl-2">
           {article.description}
         </span>
         <div className="line-clamp-3 mt-4 -mb-3 md:mb-0 indent-2 text-sm md:text-base">
