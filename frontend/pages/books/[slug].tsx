@@ -45,14 +45,14 @@ const Book = ({ book }: { book: StrapiRecord<BookType> }) => {
           {/* Book content */}
           <div className="order-last md:order-first md:col-span-7 pt-4 lg:px-10 lg:pt-0 ">
             <div className="pl-4 mb-8 md:mb-12">
-              <h1 className="text-4xl italic times-new-roman indent-2 self-baseline">
+              <h1 className="text-5xl italic times-new-roman indent-2 self-baseline">
                 {book.attributes.title}
               </h1>
-              <span className="text-sm text-zinc-700">
+              <span className="text-zinc-700">
                 {book.attributes.subtitle && book.attributes.subtitle}
               </span>
             </div>
-            <div className="mt-3 mx-auto mb-6 md:mb-0 w-11/12 md:w-10/12">
+            <div className="mt-3 mx-auto mb-6 md:mb-0 w-11/12 md:w-10/12 times-new-roman text-2xl">
               {htmlParse(book.attributes.description)}
             </div>
           </div>

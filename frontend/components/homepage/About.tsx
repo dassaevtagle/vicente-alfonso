@@ -34,7 +34,7 @@ const About = ({ bio_photo, biography }: AboutProps) => {
   const toggleBioDisplay = () => setShowFullBio(!showFullBio)
 
   return (
-    <div className="px-4 md:pr-6 md:pl-0 mt-12 md:mt-0">
+    <div className="px-4 md:pr-6 md:pl-4 pt-4 mt-12 md:mt-0 bg-primary-gray/30">
       <Image
         image={bio_photo}
         className="rounded-[50%] w-[180px] h-[180px] object-cover float-left mr-[25px]"

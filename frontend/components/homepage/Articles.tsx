@@ -1,22 +1,37 @@
 import Link from 'next/link'
-import React from 'react'
+import Image from '../common/Image'
+import React, { useMemo } from 'react'
 import htmlParse from 'html-react-parser'
 import { Article, StrapiRecord } from '../../interfaces/strapi'
-import VerticalLines from '../common/VerticalLines'
+import { FiArrowRightCircle } from 'react-icons/fi'
 
 const ArticleCard = ({ article }: { article: Article }) => {
+  const MAX_CONTENT_LENGTH = 300
+  const trimmedContent = useMemo(() => {
+    let arr = article.content.split('')
+    return arr.slice(0, MAX_CONTENT_LENGTH).join('') + '...'
+  }, [article.content])
+
   return (
     <Link href={`/articles/${article.slug}`}>
-      <div className="w-full border-solid border-zinc-900 md:mb-5 px-4 pt-2 md:p-2 border-b-[1px]">
-        <h2 className="font-semibold text-lg">{article.title}</h2>
-        <span className="text-sm pr-3 font-light text-zinc-600 block leading-none border-l-4 border-solid border-primary-yellow pl-2">
-          {article.description}
-        </span>
-        <div className="line-clamp-3 mt-4 -mb-3 md:mb-0 indent-2 text-sm md:text-base">
-          {htmlParse(article.content)}
+      <div className="w-full border-solid border-zinc-900 md:mb-5 px-4 pt-2 pb-4 md:p-2 border-b-[2px] bg-white">
+        <div className="grid sm:grid-cols-3">
+          <Image image={article.image} className='w-full h-48 sm:h-44 object-cover sm:p-2 hover:brightness-110 hover:saturate-[1.1]'/>
+          <div className='sm:col-span-2 sm:pl-3'>
+            <h2 className="font-semibold text-lg">{article.title}</h2>
+            <span className="text-sm pr-3 font-light text-zinc-600 block leading-none border-l-4 border-solid border-primary-yellow pl-2">
+              {article.description}
+            </span>
+            <div className="mt-4 -mb-3 md:mb-0 text-sm md:text-base">
+              {htmlParse(trimmedContent)} 
+              <span className='float-right'>
+                <FiArrowRightCircle size={25} />
+              </span>
+            </div>
+            {/* {article.category && article.category.data.attributes.name} */}
+            <br />
+          </div>
         </div>
-        {/* {article.category && article.category.data.attributes.name} */}
-        <br />
       </div>
     </Link>
   )
@@ -30,11 +45,9 @@ const Articles = ({ articles }: ArticlesProps) => {
   return (
     <div className="container mx-auto">
       <div className="mb-5">
-        <VerticalLines>
           <div className="times-new-roman md:pl-10 text-center font-bold text-3xl">
             Bloc de Notas
           </div>
-        </VerticalLines>
       </div>
       <div className="md:px-10 mx-auto">
         {articles.map((article) => (

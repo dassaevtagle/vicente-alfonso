@@ -14,7 +14,7 @@ const BookCard = ({ book }: { book: Book }) => (
             className="w-48 object-cover h-[300px] drop-shadow-[0_25px_25px_rgba(0,0,0,0.23)]"
           />
         </div>
-        <h3 className="text-xl text-center mt-4 source-sans-pro font-medium">
+        <h3 className="text-2xl text-center mt-6 source-sans-pro font-medium">
           {book.title}
         </h3>
       </div>
@@ -25,7 +25,7 @@ const BookCard = ({ book }: { book: Book }) => (
 const Books = ({ books }: { books: StrapiRecord<Book>[] }) => {
   const { isMobile } = useWidth()
   return (
-    <section className="w-full px-1 lg:px-14 pt-6 mt-2 bg-primary-gray/30">
+    <section className="w-full px-1 lg:px-14 py-32 ">
       <div className="relative flex py-3 items-center">
         {!isMobile && (
           <div className="flex-grow border-t border-gray-400"></div>
