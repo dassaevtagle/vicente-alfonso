@@ -4,8 +4,8 @@ import Image from '../../components/common/Image'
 
 import { fetchAPI } from '../../lib/api'
 import { Article as ArticleType, StrapiRecord } from '../../interfaces/strapi'
-import ReactMarkdown from 'react-markdown'
 import * as moment from 'moment'
+import htmlParse from 'html-react-parser'
 
 type ArticleProps = {
   article: StrapiRecord<ArticleType>
@@ -36,9 +36,9 @@ const Article = ({ article }: ArticleProps) => {
         <p className="text-indent-2 text-zinc-900 text-center text-lg italic p-5">
           {article.attributes.description}
         </p>
-        <ReactMarkdown className="px-2 md:px-4 text-justify">
-          {article.attributes.content}
-        </ReactMarkdown>
+        <div className="px-2 md:px-4 text-justify">
+          {htmlParse(article.attributes.content)}
+        </div>
       </div>
     </Layout>
   )

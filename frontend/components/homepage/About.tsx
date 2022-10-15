@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
-import ReactMarkdown from 'react-markdown'
 import { Media, SingleStrapiResponse } from '../../interfaces/strapi'
 import Image from '../common/Image'
+import htmlParse from 'html-react-parser'
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
+
 type AboutProps = {
   bio_photo: SingleStrapiResponse<Media>
   biography: string
@@ -40,7 +41,7 @@ const About = ({ bio_photo, biography }: AboutProps) => {
         style={{ shapeOutside: 'circle()' }}
       />
       <div className="pt-2 text-justify text-sm md:text-base">
-        <ReactMarkdown>{bioDisplay}</ReactMarkdown>
+        <div>{htmlParse(bioDisplay)}</div>
       </div>
       <span className="flex justify-center" onClick={toggleBioDisplay}>
         {showFullBio ? <FiChevronUp size={40} /> : <FiChevronDown size={40} />}

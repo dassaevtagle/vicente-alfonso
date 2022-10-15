@@ -8,7 +8,6 @@ import {
   Review,
   StrapiRecord,
 } from '../../interfaces/strapi'
-import ReactMarkdown from 'react-markdown'
 import Carousel, { CarouselItem } from '../../components/common/Carousel'
 import htmlParse from 'html-react-parser'
 
@@ -21,10 +20,10 @@ const BookReviews = ({
     {reviews.data.map((review) => (
       <CarouselItem key={review.id} widthPercentage={100}>
         <div className="mx-auto px-5 lg:px-44 my-20 lg:my-5">
-          <ReactMarkdown className="text-center mb-10 italic">{`"${review.attributes.content}"`}</ReactMarkdown>
-          <ReactMarkdown className="text-right">
-            {review.attributes.author}
-          </ReactMarkdown>
+          <div className="text-center mb-10 italic">{htmlParse(review.attributes.content)}</div>
+          <div className="text-right">
+            {htmlParse(review.attributes.author)}
+          </div>
         </div>
       </CarouselItem>
     ))}

@@ -2,9 +2,9 @@ import Layout from '../../components/layout/Layout'
 import Image from '../../components/common/Image'
 import { fetchAPI } from '../../lib/api'
 import { Article as ArticleType, StrapiRecord } from '../../interfaces/strapi'
-import ReactMarkdown from 'react-markdown'
 import Link from 'next/link'
 import * as moment from 'moment'
+import htmlParse from 'html-react-parser'
 
 const ArticleCard = ({ article }: { article: StrapiRecord<ArticleType> }) => (
   <div className="border-solid border-t-2">
@@ -21,9 +21,9 @@ const ArticleCard = ({ article }: { article: StrapiRecord<ArticleType> }) => (
         </p>
         <Link href={`/articles/${article.attributes.slug}`}>
           <a>
-            <ReactMarkdown className="line-clamp-4 sm:line-clamp-6 text-xs sm:text-sm mt-2 hover:cursor-pointer">
-              {article.attributes.content}
-            </ReactMarkdown>
+            <div className="line-clamp-4 sm:line-clamp-6 text-xs sm:text-sm mt-2 hover:cursor-pointer">
+              {htmlParse(article.attributes.content)}
+            </div>
           </a>
         </Link>
         <span className="hidden sm:block hover:cursor-pointer float-right text-xs hover:text-white hover:bg-gray-900 border-black border-solid border-[1px] rounded-[2px] my-2 p-1">

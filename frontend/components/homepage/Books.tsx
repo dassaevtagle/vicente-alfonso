@@ -14,7 +14,7 @@ const BookCard = ({ book }: { book: Book }) => (
             className="w-48 object-cover h-[300px] drop-shadow-[0_25px_25px_rgba(0,0,0,0.23)]"
           />
         </div>
-        <h3 className="text-xl text-center mt-4 times-new-roman font-medium">
+          <h3 className="text-xl text-center mt-4 source-sans-pro font-medium">
           {book.title}
         </h3>
       </div>

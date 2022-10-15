@@ -3,8 +3,8 @@ import Image from '../common/Image'
 import Carousel, { CarouselItem } from '../common/Carousel'
 import Modal from '../common/Modal'
 import { useState } from 'react'
-import ReactMarkdown from 'react-markdown'
 import * as moment from 'moment'
+import htmlParse from 'html-react-parser'
 
 const NoticeCard = ({ notice }: { notice: StrapiRecord<Notice> }) => (
   <div className="grid auto-rows-auto lg:max-h-[25rem] lg:max-w-[50rem] xl:px-12 justify-items-center">
@@ -49,9 +49,9 @@ const NoticeModal = ({ notice }: { notice: StrapiRecord<Notice> }) => {
           image={notice.attributes.image}
           className="mx-auto md:h-96 w-auto"
         />
-        <ReactMarkdown className="break-words text-sm md:text-base pt-4">
-          {notice.attributes.description}
-        </ReactMarkdown>
+        <div className="break-words text-sm md:text-base pt-4">
+          {htmlParse(notice.attributes.description)}
+        </div>
       </div>
     </div>
   )
