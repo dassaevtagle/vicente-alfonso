@@ -43,19 +43,20 @@ const Book = ({ book }: { book: StrapiRecord<BookType> }) => {
       <Layout title={book.attributes.title}>
         <div className="grid md:grid-cols-12 sm:p-8 justify-items-center items-top">
           {/* Book content */}
-          <div className="order-last md:order-first md:col-span-7 pt-4 lg:px-10 lg:pt-0 ">
+          <div className="md:col-span-7 pt-4 lg:px-10 lg:pt-0 ">
             <div className="pl-4 mb-8 md:mb-12">
-              <h1 className="text-5xl italic times-new-roman indent-2 self-baseline">
+              <h1 className="text-5xl italic times-new-roman indent-2 self-baseline pb-3">
                 {book.attributes.title}
               </h1>
               <span className="text-zinc-700">
                 {book.attributes.subtitle && book.attributes.subtitle}
               </span>
             </div>
-            <div className="mt-3 mx-auto mb-6 md:mb-0 w-11/12 md:w-10/12 times-new-roman text-2xl">
+            <div className="mt-3 mx-auto mb-6 md:mb-0 w-11/12 md:w-10/12 times-new-roman">
               {htmlParse(book.attributes.description)}
             </div>
           </div>
+          {/* End of book content */}
           {/* Book image */}
           <div className='self-baseline md:col-span-5 mx-4 md:m-0 mt-10 md:mt-0' onClick={() => setShowModal(true)}>
               <Image

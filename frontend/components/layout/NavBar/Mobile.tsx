@@ -26,7 +26,9 @@ const MobileNavBar = ({ links }: Props) => {
       style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.25)' }}
     >
       <h1 className="text-3xl times-new-roman italic font-medium text-left">
-        Vicente Alfonso
+        <Link href="/">
+          Vicente Alfonso
+        </Link>
       </h1>
       {isOpen ? (
         <>
