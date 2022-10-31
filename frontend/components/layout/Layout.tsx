@@ -8,9 +8,17 @@ type Props = {
   children?: ReactNode
   title: string
   displayName?: boolean
+  scrollIndicator?: boolean
+  hideNavbarOnScroll?: boolean
 }
 
-const Layout = ({ children, title, displayName = false }: Props) => {
+const Layout = ({
+  children,
+  title,
+  displayName = false,
+  scrollIndicator = false,
+  hideNavbarOnScroll = false,
+}: Props) => {
   const { siteName, facebook_url, email, twitter_url, footer_image } =
     useContext(GlobalContext)
 
@@ -27,6 +35,8 @@ const Layout = ({ children, title, displayName = false }: Props) => {
         facebook_url={facebook_url}
         twitter_url={twitter_url}
         email={email}
+        scrollIndicator={scrollIndicator}
+        hideNavbarOnScroll={hideNavbarOnScroll}
       />
       <main className="bg-white">{children}</main>
       <Footer footer_image={footer_image} />

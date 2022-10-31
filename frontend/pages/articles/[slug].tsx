@@ -6,7 +6,6 @@ import { fetchAPI } from '../../lib/api'
 import { Article as ArticleType, StrapiRecord } from '../../interfaces/strapi'
 import * as moment from 'moment'
 import htmlParse from 'html-react-parser'
-import ScrollIndicator from '../../components/common/ScrollIndicator'
 
 type ArticleProps = {
   article: StrapiRecord<ArticleType>
@@ -21,9 +20,8 @@ const Article = ({ article }: ArticleProps) => {
   }
 
   return (
-    <Layout title="Blog">
+    <Layout title="Blog" scrollIndicator hideNavbarOnScroll>
       <Seo seo={seo} />
-      <ScrollIndicator />
       <div className="container mx-auto px-2 md:px-20 pt-8">
         <h1 className="text-5xl text-left times-new-roman italic">
           {article.attributes.title}

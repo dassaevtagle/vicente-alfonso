@@ -39,7 +39,7 @@ const Book = ({ book }: { book: StrapiRecord<BookType> }) => {
 
   return (
     <>
-      <Layout title={book.attributes.title}>
+      <Layout title={book.attributes.title} hideNavbarOnScroll>
         <div className="grid md:grid-cols-12 sm:p-8 justify-items-center items-top">
           {/* Book content */}
           <div className="md:col-span-7 pt-4 lg:px-10 lg:pt-0 ">

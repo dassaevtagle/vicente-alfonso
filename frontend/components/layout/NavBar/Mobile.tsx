@@ -11,9 +11,10 @@ type Props = {
     twitter: string
     email: string
   }
+  showNavbar: boolean
 }
 
-const MobileNavBar = ({ links }: Props) => {
+const MobileNavBar = ({ links, showNavbar }: Props) => {
   const [showContact, setShowContact] = useState<boolean>(false)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const toggleOpen = () => {
@@ -22,7 +23,9 @@ const MobileNavBar = ({ links }: Props) => {
   }
   return (
     <header
-      className="w-full flex flex-wrap justify-between px-4 py-4 border-b-2 sticky top-0 z-10 bg-white"
+      className={`${
+        showNavbar ? 'translate-y-0' : '-translate-y-full'
+      } transition-transform w-full flex flex-wrap justify-between px-4 py-4 border-b-2 sticky top-0 z-10 bg-white`}
       style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.25)' }}
     >
       <h1 className="text-3xl times-new-roman italic font-medium text-left">
