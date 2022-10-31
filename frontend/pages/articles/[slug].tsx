@@ -23,7 +23,7 @@ const Article = ({ article }: ArticleProps) => {
   return (
     <Layout title="Blog">
       <Seo seo={seo} />
-      <ScrollIndicator/>
+      <ScrollIndicator />
       <div className="container mx-auto px-2 md:px-20 pt-8">
         <h1 className="text-5xl text-left times-new-roman italic">
           {article.attributes.title}

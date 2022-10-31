@@ -16,11 +16,14 @@ const ArticleCard = ({ article }: { article: Article }) => {
     <Link href={`/articles/${article.slug}`}>
       <div className="w-full border-solid border-zinc-900 md:mb-5 px-4 pt-2 pb-4 md:p-2 border-b-[1px] bg-white">
         <div className="grid sm:grid-cols-3">
-          <Image image={article.image} className='w-full h-48 sm:h-44 object-cover hover:brightness-110 hover:saturate-[1.1] border-solid border-2'/>
+          <Image
+            image={article.image}
+            className="w-full h-48 sm:h-44 object-cover hover:brightness-110 hover:saturate-[1.1] border-solid border-2"
+          />
           {/* Article text content */}
-          <div className='sm:col-span-2 sm:pl-3'>
-            <span className='float-right pt-2 pr-2 md:p-0'>
-              <FiArrowRightCircle size={25} stroke-width="1"/>
+          <div className="sm:col-span-2 sm:pl-3">
+            <span className="float-right pt-2 pr-2 md:p-0">
+              <FiArrowRightCircle size={25} stroke-width="1" />
             </span>
             <h2 className="font-semibold text-lg">{article.title}</h2>
             <span className="text-sm pr-3 font-light text-zinc-600 block leading-none border-l-4 border-solid border-primary-yellow pl-2">
@@ -47,9 +50,9 @@ const Articles = ({ articles }: ArticlesProps) => {
   return (
     <div className="container mx-auto">
       <div className="mb-5">
-          <div className="times-new-roman md:pl-10 text-center font-bold text-3xl">
-            Bloc de Notas
-          </div>
+        <div className="times-new-roman md:pl-10 text-center font-bold text-3xl">
+          Bloc de Notas
+        </div>
       </div>
       <div className="md:px-10 mx-auto">
         {articles.map((article) => (

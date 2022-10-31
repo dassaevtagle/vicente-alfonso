@@ -1,5 +1,7 @@
 type BaseStrapiResponse = {
-  readonly meta?: any
+  readonly meta?: {
+    pagination: Pagination
+  }
   readonly error?: StrapiError
 }
 
@@ -25,4 +27,11 @@ export type StrapiRecord<T> = {
     updatedAt?: string
     publishedAt?: string
   }
+}
+
+export type Pagination = {
+  page: number
+  pageSize: number
+  pageCount: number
+  total: number
 }

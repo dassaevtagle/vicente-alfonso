@@ -20,9 +20,7 @@ const DesktopNavBar = ({ displayName, links }: Props) => {
     <>
       {displayName && (
         <h1 className="text-6xl times-new-roman italic font-medium text-center pt-4 pb-8">
-          <Link href="">
-            Vicente Alfonso
-          </Link>
+          <Link href="">Vicente Alfonso</Link>
         </h1>
       )}
       <header

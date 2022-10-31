@@ -36,7 +36,6 @@ const BookReviews = ({
 
 const Book = ({ book }: { book: StrapiRecord<BookType> }) => {
   const [showModal, setShowModal] = useState<boolean>(false)
-  const [modalItem, setModalItem] = useState<number>(0)
 
   return (
     <>
@@ -52,15 +51,18 @@ const Book = ({ book }: { book: StrapiRecord<BookType> }) => {
                 {book.attributes.subtitle && book.attributes.subtitle}
               </span>
             </div>
-            <div className="mt-3 mx-auto mb-6 md:mb-0 w-11/12 md:w-10/12 times-new-roman">
+            <div className="mt-3 mx-auto mb-6 md:mb-0 w-11/12 md:w-10/12 times-new-roman md:text-xl">
               {htmlParse(book.attributes.description)}
             </div>
           </div>
           {/* End of book content */}
           {/* Book image */}
-          <div className='self-baseline md:col-span-5 mx-4 md:m-0 mt-10 md:mt-0' onClick={() => setShowModal(true)}>
-              <Image
-                className="object-cover w-[20rem] md:h-[31rem] border-solid border-2 rounded-[2px] hover:cursor-zoom-in"
+          <div
+            className="md:col-span-5 mx-4 md:m-0 mt-10 md:mt-0"
+            onClick={() => setShowModal(true)}
+          >
+            <Image
+              className="sticky top-16 object-cover w-[20rem] md:h-[31rem] border-solid border-2 rounded-[2px] hover:cursor-zoom-in"
               image={book.attributes.cover_image}
             />
           </div>
@@ -72,10 +74,10 @@ const Book = ({ book }: { book: StrapiRecord<BookType> }) => {
       </Layout>
       <Modal show={showModal} onClose={() => setShowModal(false)}>
         <Image
-          nextImageProps={{onClick: () => setShowModal(false)}}
+          nextImageProps={{ onClick: () => setShowModal(false) }}
           className="object-cover w-[18rem] md:w-[25rem] md:h-[38rem] border-solid border-[1px] border-white rounded-[2px] mt-10 md:mt-4 mx-auto hover:cursor-zoom-out"
           image={book.attributes.cover_image}
-          />
+        />
       </Modal>
     </>
   )
