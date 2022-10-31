@@ -25,10 +25,8 @@ const ScrollIndicator = ({ showNavbar }: { showNavbar: boolean }) => {
   return (
     <div
       ref={indicatorRef}
-      className={`bg-primary-yellow h-2 fixed transition-transform ${
-        showNavbar ? '' : `translate-y-[-${yPosition}px]`
-      }`}
-      style={{ width: `${scrollIndicatorWidth}%` }}
+      className={`bg-primary-yellow h-2 fixed transition-transform`}
+      style={{ width: `${scrollIndicatorWidth}%`, transform: `${showNavbar ? '' : `translateY(-${yPosition}px)`}` }}
     ></div>
   )
 }

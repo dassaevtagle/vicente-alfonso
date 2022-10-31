@@ -32,7 +32,7 @@ const DesktopNavBar = ({ displayName, links, showNavbar }: Props) => {
       <header
         ref={navBarRef}
         className={`${
-          showNavbar ? 'translate-y-0 block' : '-translate-y-full'
+          showNavbar ? 'translate-y-0' : '-translate-y-full'
         } transition-transform sticky top-0 z-10 uppercase source-sans-pro border-b-solid border-b-[1px] border-b-black py-3 bg-zinc-900 text-white`}
         style={{ boxShadow: '0px 6px 6px rgba(0, 0, 0, 0.25)' }}
       >
@@ -76,11 +76,10 @@ const DesktopNavBar = ({ displayName, links, showNavbar }: Props) => {
             >
               <a>Contacto</a>
             </div>
-          </ul>
-          {showContact && (
+            </ul>
             <ul
               className={
-                'grid w-full justify-center gap-y-4 pt-3 source-sans-pro capitalize'
+                `w-full justify-center gap-y-4 pt-3 source-sans-pro capitalize ${showContact ? "grid" : "hidden"}`
               }
             >
               {Array.from(Object.entries(links)).map((url, idx) => {
@@ -103,7 +102,6 @@ const DesktopNavBar = ({ displayName, links, showNavbar }: Props) => {
                 )
               })}
             </ul>
-          )}
         </nav>
       </header>
     </>
