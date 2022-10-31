@@ -23,7 +23,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
           {/* Article text content */}
           <div className="sm:col-span-2 sm:pl-3">
             <span className="float-right pt-2 pr-2 md:p-0">
-              <FiArrowRightCircle size={25} stroke-width="1" />
+              <FiArrowRightCircle size={25} strokeWidth="1" />
             </span>
             <h2 className="font-semibold text-lg">{article.title}</h2>
             <span className="text-sm pr-3 font-light text-zinc-600 block leading-none border-l-4 border-solid border-primary-yellow pl-2">

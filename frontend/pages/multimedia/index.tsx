@@ -103,7 +103,7 @@ const Multimedia = ({ photos, pagination }: MultimediaProps) => {
       </Masonry>
       {/* End of photos container */}
       {/* Spinner */}
-      <div ref={loadingRef} className="justify-center grid">
+      <div ref={loadingRef} className="justify-center grid mt-3">
         <span className={`${loadingMore ? 'block' : 'hidden'}`}>
           <Spinner />
         </span>

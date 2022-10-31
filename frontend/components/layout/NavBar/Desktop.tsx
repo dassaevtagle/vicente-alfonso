@@ -1,8 +1,8 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { FiExternalLink } from 'react-icons/fi'
 import ExternalLink from '../../common/ExternalLink'
-import VerticalLines from '../../common/VerticalLines'
 
 type Props = {
   displayName: boolean
@@ -15,7 +15,9 @@ type Props = {
 
 const DesktopNavBar = ({ displayName, links }: Props) => {
   const [showContact, setShowContact] = useState<boolean>(false)
-
+  const router = useRouter()
+  const activeRouteClass = "before:absolute before:translate-y-[8px] before:border-solid before:border-primary-yellow before:border-4 before:content-[''] before:ml-[-12px] before:rounded-full"
+  
   return (
     <>
       {displayName && (
@@ -29,18 +31,26 @@ const DesktopNavBar = ({ displayName, links }: Props) => {
       >
         <nav>
           <ul className="flex justify-evenly px-20">
-            <Link href="/">
-              <a>Inicio</a>
-            </Link>
-            <Link href="/#books">
-              <a>Libros</a>
-            </Link>
-            <Link href="/multimedia">
-              <a>Multimedia</a>
-            </Link>
-            <Link href="/articles">
-              <a>Bloc de notas</a>
-            </Link>
+            <li className={router.asPath === '/' ? activeRouteClass : ''}>
+              <Link href="/">
+                <a>Inicio</a>
+              </Link>
+            </li>
+            <li className={router.asPath.includes('/#books') ? activeRouteClass : ''}>
+              <Link href="/#books">
+                <a>Libros</a>
+              </Link>
+            </li>
+            <li className={router.asPath.includes('/multimedia') ? activeRouteClass : ''}>
+              <Link href="/multimedia">
+                <a>Multimedia</a>
+              </Link>
+            </li>
+            <li className={router.asPath.includes('/articles') ? activeRouteClass : ''}>
+              <Link href="/articles">
+                <a>Bloc de notas</a>
+              </Link>
+            </li>
             <div
               onClick={() => setShowContact(!showContact)}
               className="hover:cursor-pointer"
